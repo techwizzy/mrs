@@ -27,8 +27,28 @@
 
 			// Javascript method's body can be found in assets/js/demos.js
         	demo.initDashboardPageCharts();
+           //showSuccessNotification('top','right');
+
+
 
     	});
+
+     function showSuccessNotification(from, align){
+    	
+        color='orange';
+    	$.notify({
+        	icon: "notifications",
+        	message: "Welcome to <b>Material Dashboard</b> - a beautiful freebie for every web developer."
+
+        },{
+            type: type[color],
+            timer: 4000,
+            placement: {
+                from: from,
+                align: align
+            }
+        });
+	}
 	</script>
 
 </html>

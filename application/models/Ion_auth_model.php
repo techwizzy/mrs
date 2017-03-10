@@ -863,7 +863,7 @@ class Ion_auth_model extends CI_Model
 	 * @return bool
 	 * @author Mathew
 	 **/
-	public function register($identity, $password,  $additional_data = array(), $groups = array())
+	public function register($identity, $password, $email, $additional_data = array(), $groups = array())
 	{
 		$this->trigger_events('pre_register');
 
@@ -901,7 +901,7 @@ class Ion_auth_model extends CI_Model
 		    $this->identity_column   => $identity,
 		    'username'   => $identity,
 		    'password'   => $password,
-		    
+		    'email'      => $email,
 		    'ip_address' => $ip_address,
 		    'created_on' => time(),
 		    'active'     => ($manual_activation === false ? 1 : 0)
@@ -1717,7 +1717,7 @@ class Ion_auth_model extends CI_Model
 		$session_data = array(
 		    'identity'             => $user->{$this->identity_column},
 		    $this->identity_column             => $user->{$this->identity_column},
-		   
+		    'email'                => $user->email,
 		    'user_id'              => $user->id, //everyone likes to overwrite id so we'll use user_id
 		    'old_last_login'       => $user->last_login
 		);
