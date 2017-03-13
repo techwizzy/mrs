@@ -7,10 +7,9 @@ class MY_Controller extends CI_Controller {
     {
         parent::__construct();
 
-       
-    
-        
+               
             $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+            $this->load->model('service_model');
 
  }
 
@@ -27,4 +26,28 @@ class MY_Controller extends CI_Controller {
         $this->load->view('footer');
     }
 
+    
+    public function _get_csrf_nonce()
+    {
+        $this->load->helper('string');
+        $key   = random_string('alnum', 8);
+        $value = random_string('alnum', 20);
+        $this->session->set_flashdata('csrfkey', $key);
+        $this->session->set_flashdata('csrfvalue', $value);
+
+        return array($key => $value);
+    }
+
+    public function _valid_csrf_nonce()
+    {
+        $csrfkey = $this->input->post($this->session->flashdata('csrfkey'));
+        if ($csrfkey && $csrfkey == $this->session->flashdata('csrfvalue'))
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
 }

@@ -12,7 +12,7 @@
                               <div class="card-content">
                         
                            
-                         <div id="infoMessage"><?php echo $message;?></div>
+                         
 
                         <?php echo form_open("auth/create_user");?>
                             <div class="row">
@@ -21,7 +21,7 @@
                               
                                           <?php echo lang('create_user_fname_label', 'fullname');?> <br />
                                           <?php echo form_input($fullname);?>
-                               
+                                           <?=  form_error('identity'); ?>
                                        </div>
                                       </div>
                               </div>
@@ -31,9 +31,9 @@
                                 <div class="form-group label-floating">
                                   <label>Username</label>
                                    <?php
-                                        echo form_error('identity');
+                                        
                                         echo form_input($identity);
-                                     
+                                        echo form_error('identity');
                                     ?>
                                </div>
                                 

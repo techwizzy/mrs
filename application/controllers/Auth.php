@@ -80,14 +80,18 @@ class Auth extends MY_Controller {
 			$this->data['identity'] = array('name' => 'identity',
 				'id'    => 'identity',
 				'type'  => 'text',
+				'class'=> 'form-control',
+				'placeholder'=>'username',
 				'value' => $this->form_validation->set_value('identity'),
 			);
 			$this->data['password'] = array('name' => 'password',
 				'id'   => 'password',
+				'class'=> 'form-control',
+				'placeholder'=>'password',
 				'type' => 'password',
 			);
 
-			$this->_render_page('auth/login', $this->data);
+			$this->load->view('auth/login', $this->data);
 		}
 	}
 
