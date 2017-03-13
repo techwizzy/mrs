@@ -8,7 +8,7 @@
 
 			<div class="logo">
 				<a href="http://www.creative-tim.com" class="simple-text">
-					Creative Tim
+					<?= $this->config->item('app_title') ?>
 				</a>
 			</div>
 
@@ -45,8 +45,8 @@
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="maps.html">
-	                        <i class="material-icons">location_on</i>
+	                    <a href="<?= site_url('auth/index') ?>">
+	                        <i class="material-icons">User management</i>
 	                        <p>Maps</p>
 	                    </a>
 	                </li>
@@ -56,12 +56,7 @@
 	                        <p>Notifications</p>
 	                    </a>
 	                </li>
-					<li class="active-pro">
-	                    <a href="upgrade.html">
-	                        <i class="material-icons">unarchive</i>
-	                        <p>Upgrade to PRO</p>
-	                    </a>
-	                </li>
+				
 	            </ul>
 	    	</div>
 	    </div>
