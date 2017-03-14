@@ -15,7 +15,7 @@
                          <!-- <div id="infoMessage"><?php echo $message;?></div> -->
                          <?php echo validation_errors(); ?>
                         <?php echo form_open("appointment/create");?>
-                            <div class="row">
+                            <div classform_open="row">
                                     <div class="col-md-4">
                                         <div class="form-group label-floating">
                                           <label class="control-label">START</label>
@@ -41,7 +41,9 @@
                               <p><button type="submit" class="btn btn-info pull-right">Book</button></p>
                          </div>
                         <?php echo form_close();?>
-                        <div class="card-header" data-background-color="green">
+                      </div>
+                      <div class="card">
+                          <div class="card-header" data-background-color="green">
                                   <h4 class="title">Simple Table</h4>
                                   <p class="category">Here is a subtitle for this table</p>
                               </div>
@@ -68,13 +70,9 @@
                                           
                                       </tbody>
                                   </table>
-
+                                  </div>
                               </div>
-
-                      </div>
-
-
-                     </div>
+                   </div>
              </div>
      </div>
 
