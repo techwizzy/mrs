@@ -8,7 +8,6 @@
 	                                <h4 class="title">Simple Table</h4>
 	                                <p class="category">Here is a subtitle for this table</p>
 	                            </div>
-	                            <div class="card-content table-responsive">
 								<div class="card-content table-responsive">
 	                                <table class="table">
 	                                    <thead class="text-primary">
