@@ -10,6 +10,7 @@ class MY_Controller extends CI_Controller {
                
             $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
             $this->load->model('service_model');
+            $this->load->model('corporate_model');
 
  }
 

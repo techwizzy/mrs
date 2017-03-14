@@ -54,6 +54,6 @@ class Services extends MY_Controller {
             'service_cost' => $this->input->post('service_cost'),
              );
 		$this->service_model->edit($id,$data);
-		$this->show_service_id();
+		$this->index();
 	}
 }
