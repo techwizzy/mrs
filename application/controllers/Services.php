@@ -5,6 +5,12 @@ class Services extends MY_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+<<<<<<< HEAD
+=======
+	
+
+		
+>>>>>>> gilkichoi-expense-patient/master
 	}
 
 	// retrieving services
@@ -16,6 +22,7 @@ class Services extends MY_Controller {
 		
 		 
 	}
+<<<<<<< HEAD
 	public function create()
 	{
 		$data['error_message'] = '';
@@ -56,4 +63,11 @@ class Services extends MY_Controller {
 		$this->service_model->edit($id,$data);
 		$this->index();
 	}
+=======
+
+
+
+
+
+>>>>>>> gilkichoi-expense-patient/master
 }

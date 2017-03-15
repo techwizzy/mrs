@@ -8,6 +8,10 @@
 	                                <h4 class="title">Simple Table</h4>
 	                                <p class="category">Here is a subtitle for this table</p>
 	                            </div>
+<<<<<<< HEAD
+=======
+	                            <div class="card-content table-responsive">
+>>>>>>> gilkichoi-expense-patient/master
 								<div class="card-content table-responsive">
 	                                <table class="table">
 	                                    <thead class="text-primary">
@@ -22,9 +26,14 @@
 	                                	      <tr>
 	                                        	<td><?= $service->service_id; ?></td>
 	                                        	<td><?= $service->service_name; ?></td>
+<<<<<<< HEAD
 	                                        	<td><?= $service->service_cat; ?></td>
 	                                        	<td><?= $service->service_cost; ?></td>
 												<td class="btn btn-info"><?php echo anchor("services/show_service_id/".$service->service_id, 'Edit') ;?></td>
+=======
+	                                        	<td><?= $service->service_cost; ?></td>
+												<td class="text-primary">$36,738</td>
+>>>>>>> gilkichoi-expense-patient/master
 	                                        </tr>
 	                                       <?php endforeach ?>
 	                                        

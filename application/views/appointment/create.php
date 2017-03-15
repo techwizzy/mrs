@@ -1,9 +1,7 @@
   <div class="content">
         <div class="container-fluid">
               <div class="row">
-                    <div class="col-md-2">
-                    </div>
-                      <div class="col-md-8">
+                      <div class="col-md-12">
                       <div class="card">
                               <div class="card-header" data-background-color="blue">
                                   <h4 class="title">Book An Appointment</h4>
@@ -17,14 +15,14 @@
                         <?php echo form_open("appointment/create");?>
                             <div classform_open="row">
                                     <div class="col-md-4">
-                                        <div class="form-group label-floating">
+                                        <div class="form-group">
                                           <label class="control-label">START</label>
                                           <input type="datetime-local" name="start" class="form-control" >
                                         </div>
                                       </div>
                                <div class="col-md-4">
                               
-                                <div class="form-group label-floating">
+                                <div class="form-group">
                                           <label class="control-label">END</label>
                                           <input type="datetime-local" name="end" class="form-control" >
                                 </div>
