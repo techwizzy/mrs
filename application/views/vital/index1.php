@@ -8,30 +8,33 @@
 	                                <h4 class="title">Simple Table</h4>
 	                                <p class="category">Here is a subtitle for this table</p>
 	                            </div>
+	                            <div class="card-content table-responsive">
 								<div class="card-content table-responsive">
 	                                <table class="table">
 	                                    <thead class="text-primary">
-	                                    	<th>id</th>
-	                                    	<th>Service Name</th>
-	                                    	<th>Cost</th>
-											<th>Action</th>
+	                                    	<th>Blood Pressure</th>
+	                                    	<th>Oxygen</th>
+	                                    	<th>Pulse Rate</th>
+	                                    	<th>Weight</th>
+											<th>Blood Sugar</th>
+											<th>Date</th>
 	                                    </thead>
 	                                    <tbody>
-	                                        <?php foreach ($services as $service): ?>
+	                                        <?php foreach ($results as $data): ?>
 	                                
 	                                	      <tr>
-	                                        	<td><?= $service->service_id; ?></td>
-	                                        	<td><?= $service->service_name; ?></td>
-	                                        	<td><?= $service->service_cat; ?></td>
-	                                        	<td><?= $service->service_cost; ?></td>
-												<td class="btn btn-info"><?php echo anchor("services/show_service_id/".$service->service_id, 'Edit') ;?></td>
+	                                        	<td><?= $data->BP; ?></td>
+	                                        	<td><?= $data->oxygen; ?></td>
+	                                        	<td><?= $data->pulse; ?></td>
+	                                        	<td><?= $data->weight; ?></td>
+	                                        	<td><?= $data->BS; ?></td>
+												<td><?= $data->date; ?></td>
 	                                        </tr>
 	                                       <?php endforeach ?>
-	                                        
-	                                        
+
 	                                    </tbody>
 	                                </table>
-
+	                                <p class="lead"><br><?= $links ?><br></p>
 	                            </div>
 
 

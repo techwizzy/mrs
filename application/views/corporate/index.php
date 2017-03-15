@@ -5,26 +5,26 @@
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="blue">
-	                                <h4 class="title">Simple Table</h4>
-	                                <p class="category">Here is a subtitle for this table</p>
+	                                <h4 class="title">Corporate</h4>
+	                                <p class="category"></p>
 	                            </div>
+	                            <div class="card-content table-responsive">
 								<div class="card-content table-responsive">
 	                                <table class="table">
 	                                    <thead class="text-primary">
 	                                    	<th>id</th>
-	                                    	<th>Service Name</th>
-	                                    	<th>Cost</th>
+	                                    	<th>Corporate Name</th>
+	                                    	<th>Description</th>
 											<th>Action</th>
 	                                    </thead>
 	                                    <tbody>
-	                                        <?php foreach ($services as $service): ?>
+	                                        <?php foreach ($corporates as $corporate): ?>
 	                                
 	                                	      <tr>
-	                                        	<td><?= $service->service_id; ?></td>
-	                                        	<td><?= $service->service_name; ?></td>
-	                                        	<td><?= $service->service_cat; ?></td>
-	                                        	<td><?= $service->service_cost; ?></td>
-												<td class="btn btn-info"><?php echo anchor("services/show_service_id/".$service->service_id, 'Edit') ;?></td>
+	                                        	<td><?= $corporate->id; ?></td>
+	                                        	<td><?= $corporate->name; ?></td>
+	                                        	<td><?= $corporate->desc; ?></td>
+												<td class="btn btn-info"><?php echo anchor("corporate/show_corporate_id/".$corporate->id, 'Edit') ;?></td>
 	                                        </tr>
 	                                       <?php endforeach ?>
 	                                        

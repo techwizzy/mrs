@@ -5,26 +5,26 @@
 	                    <div class="col-md-12">
 	                        <div class="card">
 	                            <div class="card-header" data-background-color="blue">
-	                                <h4 class="title">Simple Table</h4>
-	                                <p class="category">Here is a subtitle for this table</p>
+	                                <h4 class="title">Expenses</h4>
+	                                <p class="category">A list of all expenses</p>
 	                            </div>
+	                            <div class="card-content table-responsive">
 								<div class="card-content table-responsive">
 	                                <table class="table">
 	                                    <thead class="text-primary">
 	                                    	<th>id</th>
-	                                    	<th>Service Name</th>
+	                                    	<th>Expense Name</th>
 	                                    	<th>Cost</th>
 											<th>Action</th>
 	                                    </thead>
 	                                    <tbody>
-	                                        <?php foreach ($services as $service): ?>
+	                                        <?php foreach ($expenses as $expense): ?>
 	                                
 	                                	      <tr>
-	                                        	<td><?= $service->service_id; ?></td>
-	                                        	<td><?= $service->service_name; ?></td>
-	                                        	<td><?= $service->service_cat; ?></td>
-	                                        	<td><?= $service->service_cost; ?></td>
-												<td class="btn btn-info"><?php echo anchor("services/show_service_id/".$service->service_id, 'Edit') ;?></td>
+	                                        	<td><?= $expense->id; ?></td>
+	                                        	<td><?= $expense->expense_name; ?></td>
+	                                        	<td><?= $expense->expense_amount; ?></td>
+												<td><?php echo anchor("expenses/edit_expense/".$expense->id, 'Edit') ;?></td>
 	                                        </tr>
 	                                       <?php endforeach ?>
 	                                        
