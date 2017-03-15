@@ -13,6 +13,8 @@ class MY_Controller extends CI_Controller {
 
             $this->load->model('corporate_model');
             $this->load->model('vitals');
+            $this->load->model('expense_model');
+            $this->load->model('patient_model');
             // $this->load->model('appointment');
  }
 
