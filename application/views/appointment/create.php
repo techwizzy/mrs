@@ -5,7 +5,7 @@
                       <div class="card">
                               <div class="card-header" data-background-color="blue">
                                   <h4 class="title">Book An Appointment</h4>
-                                    <p class="category">---------------------------</p>
+                                    <p class="category">-------------------------------------------</p>
                               </div>
                               <div class="card-content">
                         
@@ -35,8 +35,8 @@
                               </div>
                               </div>
                             </div>
-
-                              <p><button type="submit" class="btn btn-info pull-right">Book</button></p>
+                            <br><br>
+                           <p><button type="submit" class="btn btn-info pull-right">Book</button></p>
                          </div>
                         <?php echo form_close();?>
                       </div>

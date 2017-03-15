@@ -13,7 +13,7 @@ class Appointment extends MY_Controller
 	public function index()
 	{
 		$id = $this->uri->segment(3);
-		$data['single_appointment'] = $this->appointment->get_appointment($id);
+		$data['single_appointment'] = $this->appointment_model->get_appointment($id);
 		$this->_render_page('appointment/create', $data);
 	}
 	public function create()
@@ -32,7 +32,7 @@ class Appointment extends MY_Controller
 	}
 	else
 	{
-		$this->data['single_appointment']=$this->appointment->insert();
+		$this->data['single_appointment']=$this->appointment_model->insert();
 		$this->_render_page('appointment/create', $this->data);
 		//$this->session->set_flashdata('message', $this->ion_auth->messages());
 	}

@@ -2,7 +2,7 @@
 /**
 * 
 */
-class Appointment extends CI_Model
+class Appointment_model extends CI_Model
 {
 	
 	function __construct()
