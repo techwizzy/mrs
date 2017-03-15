@@ -12,7 +12,6 @@ class Service_model extends CI_Model {
     	$query=$this->db->get('service');
     	return $query;
     }
-<<<<<<< HEAD
     public function insert()
  	{
  		$this->load->helper('url');
@@ -46,6 +45,5 @@ class Service_model extends CI_Model {
         $this->db->update('service', $data);
     }
 } 
-=======
+
 }
->>>>>>> gilkichoi-expense-patient/master
