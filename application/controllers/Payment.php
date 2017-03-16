@@ -16,7 +16,9 @@ class Payment extends MY_Controller {
 	public function cash()
 	{
 		$id = $this->uri->segment(3);
+		$date=date('Y-M-D H:m:s', strtotime($this->input->post('date')));
 		$data['patient'] = $this->payment_model->show($id);
 		$data['single_bill'] = $this->payment_model->show_id($id);
 		$this->_render_page('payments/cash', $data);
 	}
+}
