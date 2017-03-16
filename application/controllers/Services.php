@@ -35,7 +35,6 @@ class Services extends MY_Controller {
 	{
 		$this->data['services']=$this->service_model->insert();
 		$this->_render_page('services/index', $this->data);
-		//$this->session->set_flashdata('message', $this->ion_auth->messages());
 	}
 	}
 	public function show_service_id()

@@ -33,7 +33,6 @@ class Corporate extends MY_Controller {
 	{
 		$this->data['corporates']=$this->corporate_model->insert();
 		$this->_render_page('corporate/index', $this->data);
-		//$this->session->set_flashdata('message', $this->ion_auth->messages());
 	}
 	}
 	public function show_corporate_id()

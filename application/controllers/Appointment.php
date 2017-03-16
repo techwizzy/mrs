@@ -34,7 +34,6 @@ class Appointment extends MY_Controller
 	{
 		$this->data['single_appointment']=$this->appointment_model->insert();
 		$this->_render_page('appointment/create', $this->data);
-		//$this->session->set_flashdata('message', $this->ion_auth->messages());
 	}
 }
 }
