@@ -7,7 +7,6 @@ class patient_model extends CI_Model {
                  $data= array();
                 
         }
-    
     public function get_patient()
     {
     	$query=$this->db->get('patient');

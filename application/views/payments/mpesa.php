@@ -18,9 +18,9 @@
                         <?php echo form_open("payment/cash");?>
                             <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group label-floating">
+                                        <div class="form-group">
                                           <label class="control-label">Date</label>
-                                          <input type="datetime-local" name="date" class="form-control" >
+                                          <input type="datetime-local" name="date" class="form-control" value="<?= date('Y-m-d H:i:s')?>" >
                                         </div>
                                       </div>
                               </div>
