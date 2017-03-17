@@ -20,6 +20,7 @@ class Payment extends MY_Controller {
 		$date=date('Y-M-D H:m:s', strtotime($this->input->post('date')));
 		$data['patient'] = $this->payment_model->show($id);
 		$data['single_bill'] = $this->payment_model->show_id($id);
+		//var_dump($data);
 		$this->_render_page('payments/cash', $data);
 	}
 	public function check()
@@ -57,5 +58,25 @@ class Payment extends MY_Controller {
 		$data['patient'] = $this->payment_model->show($id);
 		$data['single_bill'] = $this->payment_model->show_id($id);
 		$this->_render_page('payments/mpesa', $data);
+	}
+	public function cashinsert()
+	{
+		$data['error_message'] = '';
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('service_name','Service Name', 'required');
+		$this->form_validation->set_rules('service_category','Service Category', 'required');
+		$this->form_validation->set_rules('service_cost','Service Cost', 'required');
+	if ($this->form_validation->run() === FALSE) 
+	{
+		$this->data['error_message'] = validation_errors();
+		$this->_render_page('services/create', $this->data);
+	}
+	else
+	{
+		$this->data['services']=$this->service_model->insert();
+		$this->_render_page('services/index', $this->data);
+	}
 	}
 }

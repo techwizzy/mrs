@@ -44,5 +44,18 @@ class Service_model extends CI_Model {
         $this->db->where('service_id', $id);
         $this->db->update('service', $data);
     }
+    public function each($value)
+    {
+        $this->db->select('service_name', 'service_cost');
+        $this->db->from('service');
+        $this->db->where('service_id', $value);
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
+    public function insert_register($data)
+    {
+       return $this->db->insert('patient_service', $data);
+    }
 } 
 
