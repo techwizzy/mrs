@@ -6,8 +6,8 @@
                       <div class="col-md-8">
                       <div class="card">
                               <div class="card-header" data-background-color="blue">
-                                  <h4 class="title">Cash Payment</h4>
-                                    <p class="category">New Payment <i class="fa fa-money" aria-hidden="true"></i>
+                                  <h4 class="title">Check Payment</h4>
+                                    <p class="category">New Payment <i class="fa fa-cc-diners-club" aria-hidden="true"></i>
  </p>
                               </div>
                               <div class="card-content">
@@ -15,7 +15,7 @@
                            
                          <!-- <div id="infoMessage"><?php echo $message;?></div> -->
                          <?php echo validation_errors(); ?>
-                        <?php echo form_open("payment/cash");?>
+                        <?php echo form_open("payment/checkinsert");?>
                             <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
@@ -29,7 +29,9 @@
 
                               <div class="form-group label-floating">
                                   <label class="control-label">Patient</label>
-                                  <input type="text" name="Patient_anme" class="form-control" >
+                                  <input type="text" name="Patient_name" class="form-control" value="<?php foreach ($patient as $p) {
+                                    echo $p->first_name;
+                                  }?>" >
                               </div>
                               </div>
                             </div>
@@ -69,17 +71,10 @@
                               </div>
                               </div>
                             </div>
-
-                              <p><button type="submit" class="btn btn-info pull-right"><i class="fa fa-cc-diners-club" aria-hidden="true"></i>
-Recieve Payment</button>
-                                      </p>
+                            <p><button type="submit" class="btn btn-info pull-right"><i class="fa fa-cc-diners-club" aria-hidden="true"></i> Recieve Payment</button></p>
                          </div>
                         <?php echo form_close();?>
-
-
                       </div>
-
-
                      </div>
              </div>
      </div>

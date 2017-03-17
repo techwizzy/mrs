@@ -19,7 +19,7 @@
 						                            <?php echo anchor("payment/cash/".$patient->file_no, '<button class="btn btn-info"><i class="fa fa-money icon-large"></i><br>Cash</button>') ;?>
 						                            <?php echo anchor("payment/check/".$patient->file_no, '<button class="btn btn-info"><i class="fa fa-keyboard-o icon-large"></i><br>Check</button>') ;?>
 						                            <?php echo anchor("payment/credit/".$patient->file_no, '<button class="btn btn-info"><i class="fa fa-credit-card fa-large"></i><br> Credit card</button>') ;?>
-						                            <?php echo anchor("payment/corporate/".$patient->file_no, '<button class="btn btn-info"><i class="fa fa-list icon-large"></i><br>Corporate</button>') ;?>
+						                            <?php echo anchor("payment/corporate/".$patient->file_no, '<button class="btn btn-info"><i class="fa fa-address-card-o icon-large"></i><br>Corporate</button>') ;?>
 						                           	<?php echo anchor("payment/mpesa/".$patient->file_no, '<button class="btn btn-info"><i class="<i class="fa fa-mobile-phone"></i><br>Mpesa</button>') ;?>
 						                        </div>
 						                    <?php endforeach ?>
