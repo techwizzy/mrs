@@ -11,14 +11,22 @@ class MY_Controller extends CI_Controller {
             $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
             $this->load->model('service_model');
 
+            $this->load->model('corporate_model');
+            $this->load->model('vitals');
+            $this->load->model('expense_model');
+            $this->load->model('patient_model');
+            $this->load->model('appointment_model');
+            $this->load->model('payment_model');
+            $this->data['link_status']="menu-current";
+            $this->data['active_style']='style="color:orange"';
  }
 
     public function _render_page($view, $data=null, $returnhtml=false)//I think this makes more sense
     {
 
-        $this->load->view('header');
-        $this->load->view('sidebar');
-        $this->load->view('topbar');
+        $this->load->view('header',$this->data);
+       // $this->load->view('sidebar');
+       // $this->load->view('topbar');
         $this->viewdata = (empty($data)) ? $this->data: $data;
 
          $this->load->view($view, $this->viewdata, $returnhtml);

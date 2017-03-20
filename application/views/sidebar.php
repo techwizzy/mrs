@@ -14,34 +14,34 @@
 
 	    	<div class="sidebar-wrapper">
 	            <ul class="nav">
-	                <li class="active">
-	                    <a href="dashboard.html">
+	                <li>
+	                    <a href="<?= site_url('') ?>">
 	                        <i class="material-icons">dashboard</i>
 	                        <p>Dashboard</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="user.html">
-	                        <i class="material-icons">person</i>
-	                        <p>User Profile</p>
+	                    <a href="<?= site_url('appointment/index') ?>">
+	                        <i class="material-icons">schedule</i>
+	                        <p>Appointment</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="table.html">
-	                        <i class="material-icons">content_paste</i>
-	                        <p>Table List</p>
+	                    <a href="<?= site_url('corporate/index') ?>">
+	                        <i class="material-icons">folder_shared</i>
+	                        <p>Corporate</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="typography.html">
-	                        <i class="material-icons">library_books</i>
-	                        <p>Typography</p>
+	                    <a href="<?= site_url('expenses/index') ?>">
+	                        <i class="material-icons">monetization_on</i>
+	                        <p>Expenses</p>
 	                    </a>
 	                </li>
 	                <li>
-	                    <a href="icons.html">
-	                        <i class="material-icons">bubble_chart</i>
-	                        <p>Icons</p>
+	                    <a href="<?= site_url('services/index') ?>">
+	                        <i class="material-icons">local_hospital</i>
+	                        <p>Services</p>
 	                    </a>
 	                </li>
 	                <li>

@@ -8,7 +8,6 @@
 	                                <h4 class="title">Simple Table</h4>
 	                                <p class="category">Here is a subtitle for this table</p>
 	                            </div>
-	                            <div class="card-content table-responsive">
 								<div class="card-content table-responsive">
 	                                <table class="table">
 	                                    <thead class="text-primary">
@@ -23,8 +22,9 @@
 	                                	      <tr>
 	                                        	<td><?= $service->service_id; ?></td>
 	                                        	<td><?= $service->service_name; ?></td>
+	                                        	<td><?= $service->service_cat; ?></td>
 	                                        	<td><?= $service->service_cost; ?></td>
-												<td class="text-primary">$36,738</td>
+												<td class="btn btn-info"><?php echo anchor("services/show_service_id/".$service->service_id, 'Edit') ;?></td>
 	                                        </tr>
 	                                       <?php endforeach ?>
 	                                        
