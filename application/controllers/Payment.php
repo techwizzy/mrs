@@ -10,6 +10,11 @@ class Payment extends MY_Controller {
 	public function index()
 	{
 		$id = $this->uri->segment(3);
+		$patient_data = array(
+			'id' => $this->uri->segment(3);
+			'date' => date(Y-M-D H:m:s);
+			);
+		$this->session->set_userdate($patient_data);
 		$data['patient'] = $this->payment_model->show($id);
 		$this->_render_page('payments/method', $data);
 	}
