@@ -16,7 +16,7 @@
 						                        <h4 align="center"><i class="fa fa-suitcase"></i>Receive Payment By Choosing a method Below</h4>
 						                    <?php foreach ($patient as $patient): ?>
 						                        <div align="center">
-						                            <?php echo anchor("payment/cash/".$patient->file_no, '<button class="btn btn-info"><i class="fa fa-money icon-large"></i><br>Cash</button>') ;?>
+						                            <?php echo anchor("payment/cash", '<button class="btn btn-info"><i class="fa fa-money icon-large"></i><br>Cash</button>') ;?>
 						                            <?php echo anchor("payment/check/".$patient->file_no, '<button class="btn btn-info"><i class="fa fa-keyboard-o icon-large"></i><br>Check</button>') ;?>
 						                            <?php echo anchor("payment/credit/".$patient->file_no, '<button class="btn btn-info"><i class="fa fa-credit-card fa-large"></i><br> Credit card</button>') ;?>
 						                            <?php echo anchor("payment/corporate/".$patient->file_no, '<button class="btn btn-info"><i class="fa fa-address-card-o icon-large"></i><br>Corporate</button>') ;?>

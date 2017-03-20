@@ -9,19 +9,24 @@ class Payment extends MY_Controller {
 	}
 	public function index()
 	{
-		$id = $this->uri->segment(3);
-		$patient_data = array(
-			'id' => $this->uri->segment(3);
-			'date' => date(Y-M-D H:m:s);
-			);
-		$this->session->set_userdate($patient_data);
+		$id = $this->session->userdata('id');
 		$data['patient'] = $this->payment_model->show($id);
 		$this->_render_page('payments/method', $data);
 	}
-	public function cash()
+	public function list1()
 	{
 		$id = $this->uri->segment(3);
-		//save date to the db
+		$patient_data = array(
+			'id' => $this->uri->segment(3),
+			'date' => date('Y-M-D H:m:s')
+			);
+		$this->session->set_userdata($patient_data);
+		$data['patient'] = $this->payment_model->show($id);
+		$this->_render_page('list', $data);
+	}
+	public function cash()
+	{
+		$id = $this->session->userdata('id');
 		$date=date('Y-M-D H:m:s', strtotime($this->input->post('date')));
 		$data['patient'] = $this->payment_model->show($id);
 		$data['single_bill'] = $this->payment_model->show_id($id);

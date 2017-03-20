@@ -24,7 +24,7 @@
 	                                        	
 	                                	      <tr>
 	                                	      <td><?= $no; ?></td>
-	                                        	<td><?php echo anchor("payment/index/".$patient->file_no, $patient->file_no) ;?></td>
+	                                        	<td><?php echo anchor("payment/list1/".$patient->file_no, $patient->file_no) ;?></td>
 	                                        	<td><?= $patient->first_name; ?>
 	                                        	<td><?= $patient->gender; ?></td>
 												<td><?php echo anchor("patient/edit_patient/".$patient->file_no, 'Edit') ;?></td>

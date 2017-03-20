@@ -41,7 +41,7 @@
                               <div class="form-group label-floating">
                                   <label class="control-label">Total Bill</label>
                                   <input type="text" name="total_bill" class="form-control" value="<?php foreach ($single_bill as $bill) {
-                                    echo $bill->first_name;
+                                    echo $bill->service_cost;
                                   }?>" >
                               </div>
                               </div>
