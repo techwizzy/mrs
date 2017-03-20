@@ -56,40 +56,6 @@ class Services extends MY_Controller {
 		$this->service_model->edit($id,$data);
 		$this->index();
 	}
-	/*public function register()
-	{
-		$data['error_message'] = '';
-		$this->load->helper('form');
-		$this->load->library('form_validation');
-	if ($this->form_validation->run() === FALSE) 
-	{
-		$this->data['services']=$this->service_model->get_services()->result();
-		$this->data['error_message'] = validation_errors();
-		$this->_render_page('services/register', $this->data);
-	}
-	else
-	{
-		$ids=$this->input->post('service');
-		foreach ($ids as $id) {
-			//
-			$query = $this->service_model->each($id);
-			foreach ($query->result() as $row) {
-				$service_name=$row->service_name;
-				$service_cost=$row->service_cost;
-				$date = date("Y-m-d H:i:s");
-				$data = array(
-					'service_name' => $service_name ,
-					'service_cost' => $service_cost ,
-					'date_of_service' => $date,
-					);
-				$data['register'] = $this->service_model->insert_register($data);
-			}
-		}
-
-		$this->index();
-		//$this->_render_page('services/register', $this->data);
-	}
-	}*/
 	public function register()
 	{
 		$this->data['services']=$this->service_model->get_services()->result();
