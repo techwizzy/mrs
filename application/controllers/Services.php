@@ -56,7 +56,7 @@ class Services extends MY_Controller {
 		$this->service_model->edit($id,$data);
 		$this->index();
 	}
-	public function register()
+	/*public function register()
 	{
 		$data['error_message'] = '';
 		$this->load->helper('form');
@@ -69,7 +69,7 @@ class Services extends MY_Controller {
 	}
 	else
 	{
-		$ids=$_POST['service'];
+		$ids=$this->input->post('service');
 		foreach ($ids as $id) {
 			//
 			$query = $this->service_model->each($id);
@@ -89,5 +89,23 @@ class Services extends MY_Controller {
 		$this->index();
 		//$this->_render_page('services/register', $this->data);
 	}
-	}
+	}*/
+	public function register()
+	{
+		$this->data['services']=$this->service_model->get_services()->result();
+		$this->_render_page('services/register',$this->data);
+		$data=array();
+	
+
+    if ($this->input->post()) {
+        $data['service_name']=$this->input->post('service_name',true);
+        $data['service_cost']=$this->input->post('service_cost',true);
+
+        $this->service_model->insert_register($data);
+
+        $sdata=array();
+        $this->index();
+    } 
+}
+
 }

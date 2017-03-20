@@ -22,7 +22,9 @@
                             <td>
                               <div class="checkbox">
                                 <label>
-                                  <input type="checkbox" name="service[]" value="<?= $service->service_id?>">
+                                  <!-- <input hidden="hidden" name="service_id[]" value="<?= $service->service_id?>"> -->
+                                  <input type="checkbox" name="service_name[]" value="<?php echo $service->service_name;?>" /> 
+                                  <input hidden="hidden" name="service_cost[]" value="<?php echo $service->service_cost;?>" /> 
                                 </label>
                               </div>
                             </td>
