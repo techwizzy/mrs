@@ -23,7 +23,6 @@ class Corporate extends MY_Controller {
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('corporate_name','Corporate Name', 'required');
-		$this->form_validation->set_rules('corporate_desc','Corporate Description', 'required');
 	if ($this->form_validation->run() === FALSE) 
 	{
 		$this->data['error_message'] = validation_errors();
