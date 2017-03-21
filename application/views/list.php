@@ -66,7 +66,7 @@
 						<?php endforeach ?>
 					</div>
 					<div class="row">
-					<div class="col-lg-6 col-md-12">
+					<div class="col-lg-12 col-md-12">
 							<div class="card">
 	                            <div class="card-header" data-background-color="orange">
 	                                <h4 class="title">Vital Sign</h4>
@@ -97,7 +97,6 @@
 
 	                                    </tbody>
 	                                </table>
-	                                <p class="lead"><br><?= $links ?><br></p>
 	                            </div>
 	                        </div>
 						</div>

@@ -22,15 +22,7 @@ class Payment extends MY_Controller {
 			'date' => date('Y-M-D H:m:s')
 			);
 		$this->session->set_userdata($patient_data);
-		$config = array();
-		$config["base_url"] = base_url()."list";
-		$config["total_rows"] = $this->vitals->vital_count();
-		$config["per_page"] = 5;
-		$config["uri_segment"] = 3;
-
-		$this->pagination->initialize($config);
-		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$data["results"] = $this->vitals->fetch_vitals($config["per_page"], $page);
+		$data["results"] = $this->vitals->fetch($id);
 		$data["links"] = $this->pagination->create_links();
 		$data['patient'] = $this->payment_model->show($id);
 		$this->_render_page('list', $data);
