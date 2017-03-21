@@ -56,5 +56,21 @@ class Services extends MY_Controller {
 		$this->service_model->edit($id,$data);
 		$this->index();
 	}
+	public function register()
+	{
+		$this->data['services']=$this->service_model->get_services()->result();
+		$this->_render_page('services/register',$this->data);
+		$data=array();
+	
+
+    if ($this->input->post()) {
+        $data['service_name']=$this->input->post('service_name',true);
+        $data['service_cost']=$this->input->post('service_cost',true);
+        $id = $this->session->userdata('id');
+
+        $this->service_model->insert_register($data,$id);
+        $this->index();
+    } 
+}
 
 }

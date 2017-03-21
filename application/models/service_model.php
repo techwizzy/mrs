@@ -44,5 +44,27 @@ class Service_model extends CI_Model {
         $this->db->where('service_id', $id);
         $this->db->update('service', $data);
     }
+    public function each($value)
+    {
+        $this->db->select('service_name', 'service_cost');
+        $this->db->from('service');
+        $this->db->where('service_id', $value);
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
+    public function insert_register($data, $id)
+    {
+        if (isset($data['service_name']) && is_array($data['service_name'])):
+            foreach ( $data['service_name'] as $key=>$value ):
+                $this->db->insert('patient_service', array(
+                   'service_name'=>$data['service_name'][$key],
+                   'service_cost'=>$data['service_cost'][$key],
+                   'file_no' => $id,
+                   'date_of_service' => date("Y-m-d H:i:s")// assuming this are the same for all rows?
+                ));
+            endforeach;
+        endif; 
+    }
 } 
 

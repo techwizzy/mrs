@@ -29,9 +29,9 @@ class Payment_model extends CI_Model {
     }
     function show_id($data)
     {
-        $this->db->select('*');
-        $this->db->from('patient_bill');
-        $this->db->where('transaction_id', $data);
+        $this->db->select_sum('service_cost');
+        $this->db->from('patient_service');
+        $this->db->where('file_no', $data);
         $query = $this->db->get();
         $result = $query->result();
         return $result;
@@ -42,4 +42,3 @@ class Payment_model extends CI_Model {
         $this->db->update('service', $data);
     }
 } 
-
