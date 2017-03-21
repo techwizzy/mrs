@@ -23,9 +23,7 @@
    <script src="<?= base_url() ?>assets/js/tabs.js"></script>
    <script src="<?= base_url() ?>assets/js/highcharts.js"></script>
     <script src="<?= base_url() ?>assets/js/exporting.js"></script>
-		<script>
-			new CBPFWTabs( document.getElementById( 'tabs' ) );
-		</script>
+	
     <script type="text/javascript">
     $(function() {
     	Highcharts.chart('container', {
@@ -79,5 +77,6 @@ $(window).load(function() {
   $(".loader").fadeOut("slow");
 })
 </script>
+
   </body>
 </html>

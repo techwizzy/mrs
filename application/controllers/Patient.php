@@ -13,7 +13,8 @@ class Patient extends MY_Controller {
 	// retrieving services
 	public function index()
 	{
-
+         $this->data['token']='home';
+         $this->data['sub_token']='patient_search';
 		 $this->data['patient']=$this->patient_model->get_patient()->result();
 		 $this->_render_page('patient/patients',$this->data);
 		
@@ -34,6 +35,9 @@ class Patient extends MY_Controller {
 
 	 public function create_patient()
 	{
+
+		   $this->data['token']='home';
+           $this->data['sub_token']='patient_search';
             $date=date('Y-m-d h:m:i');
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message'); 
@@ -79,7 +83,13 @@ class Patient extends MY_Controller {
      }
 }
 
-
+ public function search_patient()
+ {
+ 	 if (isset($_GET['term'])){
+            $q = strtolower($_GET['term']);
+            $this->patient_model->get_patient_data($q);
+     }
+ }
 
 
 

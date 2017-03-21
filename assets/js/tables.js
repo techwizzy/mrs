@@ -15,5 +15,8 @@ $(document).ready(function() {
             'colvis'
         ]
         });
+         $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
 
 } );

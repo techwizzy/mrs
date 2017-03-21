@@ -1,10 +1,10 @@
-<section >
+                  <section >
                                   <div class="col-md-3">
                                     <div class="sidebar content-box" style="display: block;">
                                         <ul class="nav">
                                             <!-- Main menu -->
                                             <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                                            <li><a href="search_patient.html"><i class="glyphicon glyphicon-search"></i> Find patient</a></li>
+                                            <li><a href="<?= site_url('patient'); ?>"><i class="glyphicon glyphicon-search"></i> Find patient</a></li>
                                             <li><a href="new_patient.html"><i class="glyphicon glyphicon-plus-sign"></i> Register patient</a></li>
                             
                                         </ul>

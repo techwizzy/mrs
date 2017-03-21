@@ -1,17 +1,36 @@
 
+                           <section >
+                                  <div class="col-md-3">
+                                     <div class="sidebar content-box" style="display: block;">
+                                        <ul class="nav">
+                                            <!-- Main menu -->
+                                            <li class="current"><a href="<?= site_url('auth/index') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-user"></i> Dashboard</a></li>
+                                            <li><a href="<?= site_url('patient/patients') ?>" <?php if (isset($link_status) && $sub_token=='patient_search'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-search"></i> Find Patient</a></li>
+                                            <li><a href="<?= site_url('patient/create_patient') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-check-circle"></i> Register patient</a></li>
+                            
+                                        </ul>
+                                     </div>
+                                  </div>
+                                    <div class="col-md-9">
+                                    <div class="content-box-large">
+                                        <div class="panel-heading">
+                                        <h4 class="title">Patient</h4>
+                                       
+                                                      <div class="box-tools pull-right" style="margin-right:50px;">
+                                          <div class="btn-group">
+                                            
+                                          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Patient options
+                                            <span class="caret"></span>
+                                           </button>
+                                          <ul class="dropdown-menu" role="menu">
+                                           
+                                          </ul>
+                                        </div>
 
-
-<div class="content">
-              <div class="container-fluid">
-                  <div class="row">
-                      <div class="col-md-8">
-                          <div class="card">
-                              <div class="card-header" data-background-color="blue">
-                                  <h4 class="title">Patient registration</h4>
-                  <p class="category">Add New Patient </p>
-                              </div>
-                              <div class="card-content">
-                              <form action="<?= site_url('patient/create_patient'); ?>" id="sky-form" class="sky-form" method="POST" enctype="multipart/form-data" style="border-color:#2a7979">
+                                       </div>
+                                        </div>
+                                        <div class="panel-body">
+                                         <form action="<?= site_url('patient/create_patient'); ?>" id="sky-form" class="sky-form" method="POST" enctype="multipart/form-data" style="border-color:#2a7979">
                                  
 
                                       <div class="row">
@@ -158,28 +177,12 @@
                               </div>
                           </div>
                       </div>
-            <!--div class="col-md-4">
-                <div class="card card-profile">
-                  <div class="card-avatar">
-                    <a href="#pablo">
-                      <img class="img" src="../assets/img/faces/marc.jpg" />
-                    </a>
-                  </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                  <div class="content">
-                    <h6 class="category text-gray">CEO / Co-Founder</h6>
-                    <h4 class="card-title">Alec Thompson</h4>
-                    <p class="card-content">
-                      Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                    </p>
-                    <a href="#pablo" class="btn btn-primary btn-round">Follow</a>
-                  </div>
-                </div>
-              </div-->
-                  </div>
-              </div>
-          </div>
-
+                    </section>
+          
 
 
 

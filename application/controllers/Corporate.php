@@ -10,12 +10,8 @@ class Corporate extends MY_Controller {
 	// retrieving corporates
 	public function index()
 	{
-<<<<<<< HEAD
          $this->data['token'] = 'admin';
          $this->data['sub_token'] = 'corporates';
-=======
-
->>>>>>> origin/master
 		 $this->data['corporates']=$this->corporate_model->get_corporates()->result();
 		 $this->_render_page('corporate/index',$this->data);
 		
@@ -23,12 +19,8 @@ class Corporate extends MY_Controller {
 	}
 	public function create()
 	{
-<<<<<<< HEAD
 		$this->data['token'] = 'admin';
         $this->data['sub_token'] = 'corporates';
-=======
-		$data['error_message'] = '';
->>>>>>> origin/master
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -47,11 +39,8 @@ class Corporate extends MY_Controller {
 	}
 	public function show_corporate_id()
 	{
-<<<<<<< HEAD
 		$this->data['token'] = 'admin';
          $this->data['sub_token'] = 'corporates';
-=======
->>>>>>> origin/master
 		$id = $this->uri->segment(3);
 		$data['corporate'] = $this->corporate_model->show_corporate();
 		$data['single_corporate'] = $this->corporate_model->show_corporate_id($id);

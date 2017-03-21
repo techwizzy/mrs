@@ -82,7 +82,7 @@
                     <ul>
                         <li <?php if (isset($link_status) && $token=='home'): ?>
                             class="<?= $link_status ?>"
-                        <?php endif ?> ><a href="<?=site_url('auth/index')?>"  <?php if (isset($link_status) && $token=='home'): ?> <?= $active_style ?><?php endif ?> ><span><i class="glyphicon glyphicon-home"></i> Home</span></a></li>
+                        <?php endif ?> ><a href="<?=site_url('auth/index')?>"  <?php if (isset($link_status) && $token=='home'): ?> <?= $active_style ?><?php endif ?> ><span><i class="glyphicon glyphicon-home"></i> Registration Desk</span></a></li>
                         <li <?php if (isset($link_status) && $token=='appointment'): ?>
                             class="<?= $link_status ?>"
                         <?php endif ?> ><a href="<?=site_url('auth/create_user')?>" <?php if (isset($link_status) && $token=='appointment'): ?> <?= $active_style ?><?php endif ?>><span><i  class="glyphicon glyphicon-calendar"></i> Appointment scheduling</span></a></li>

@@ -17,11 +17,8 @@ class MY_Controller extends CI_Controller {
             $this->load->model('patient_model');
             $this->load->model('appointment_model');
             $this->load->model('payment_model');
-<<<<<<< HEAD
             $this->data['link_status']="menu-current";
             $this->data['active_style']='style="color:orange"';
-=======
->>>>>>> origin/master
  }
 
     public function _render_page($view, $data=null, $returnhtml=false)//I think this makes more sense
