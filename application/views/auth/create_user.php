@@ -1,25 +1,42 @@
-  <div class="content">
-        <div class="container-fluid">
-              <div class="row">
-                    <div class="col-md-2">
-                    </div>
-                      <div class="col-md-8">
-                      <div class="card">
-                              <div class="card-header" data-background-color="blue">
-                                  <h4 class="title"><?php echo lang('create_user_heading');?></h4>
-                                    <p class="category"><?php echo lang('create_user_subheading');?></p>
-                              </div>
-                              <div class="card-content">
-                        
-                           
-                         
+                        <section >
+                                  <div class="col-md-3">
+                                       <div class="sidebar content-box" style="display: block;">
+                                        <ul class="nav">
+                                            <!-- Main menu -->
+                                            <li class="current"><a href="<?= site_url('auth/users') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-user"></i> User Management</a></li>
+                                            <li><a href="<?= site_url('corporate/corporates') ?>" <?php if (isset($link_status) && $sub_token=='corporates'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-folder-open"></i> Insurance Companies</a></li>
+                                            <li><a href="<?= site_url('auth/backup') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-upload"></i> Backup</a></li>
+                            
+                                        </ul>
+                                     </div>
+                                  </div>
+                                    <div class="col-md-8">
+                                    <div class="content-box-large">
 
-                        <?php echo form_open("auth/create_user");?>
+                                        <div class="panel-heading">
+                                                   <div class="box-tools pull-right" style="margin-right:50px;">
+                                    <div class="btn-group">
+                                  
+                                    <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">user options
+                                      <span class="caret"></span>
+                                     </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                      <li><a href="<?= site_url('auth/users') ?>"></i>All users</a></li>
+                                       <li class="divider"></li>
+                                      <li><a href="<?= site_url('auth/create_user'); ?>">Create user</a></li>
+                                     
+                                    </ul>
+                                  </div>
+
+                              </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <?php echo form_open("auth/create_user");?>
                             <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
-                              
-                                          <?php echo lang('create_user_fname_label', 'fullname');?> <br />
+                                         <label> Full name</label>
+                                          
                                           <?php echo form_input($fullname);?>
                                            <?=  form_error('identity'); ?>
                                        </div>
@@ -87,18 +104,22 @@
                               </div>
                               </div>
                               </div>
+                              </div>
+                              <div class="panel-footer" style="background-color:#fff">
 
-                              <p><button type="submit" class="btn btn-info pull-right">Create user</button>
-                                      </p>
+                              <div class="form-group label-floating">
+                              <button type="submit" class="btn btn-warning ">Create user</button>
+                              </div>
+                         </div>
                          </div>
                         <?php echo form_close();?>
+                                        </div>
+                                    </div>
+                                </div>
+
+                    </section>
+          
 
 
-                      </div>
 
-
-                     </div>
-             </div>
-     </div>
-
-</div>
+  

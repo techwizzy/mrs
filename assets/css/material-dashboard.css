@@ -1774,12 +1774,13 @@ output {
   background-size: 0 2px, 100% 1px;
   background-repeat: no-repeat;
   background-position: center bottom, center calc(100% - 1px);
-  background-color: transparent;
+  background-color: #f5f5f5;
   transition: background 0s ease-out;
   float: none;
   box-shadow: none;
-  border-radius: 0;
+  border-radius: 3;
   font-weight: 400;
+  padding:20px;
 }
 .form-control::-moz-placeholder,
 .form-group .form-control::-moz-placeholder {

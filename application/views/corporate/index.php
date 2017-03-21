@@ -1,39 +1,64 @@
+                       <section >
+                                  <div class="col-md-3">
+                                     <div class="sidebar content-box" style="display: block;">
+                                        <ul class="nav">
+                                            <!-- Main menu -->
+                                            <li class="current"><a href="<?= site_url('auth/users') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-user"></i> User Management</a></li>
+                                            <li><a href="<?= site_url('corporate/index') ?>" <?php if (isset($link_status) && $sub_token=='corporates'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-folder-open"></i> Insurance Companies</a></li>
+                                            <li><a href="<?= site_url('auth/backup') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-upload"></i> Backup</a></li>
+                            
+                                        </ul>
+                                     </div>
+                                  </div>
+                                    <div class="col-md-9">
+                                    <div class="content-box-large">
+                                        <div class="panel-heading">
+                                                      <div class="box-tools pull-right" style="margin-right:50px;">
+                                          <div class="btn-group">
+                                            
+                                          <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">Corporate options
+                                            <span class="caret"></span>
+                                           </button>
+                                          <ul class="dropdown-menu" role="menu">
+                                            <li><a href="<?= site_url('corporate/index'); ?>"><strong>All Corporates</strong></a></li>
+                                             <li class="divider"></li>
+                                            <li><a href="<?= site_url('corporate/create'); ?>"><strong>Add Corporate</strong></a></li>
+                                           
+                                          </ul>
+                                        </div>
 
-	        <div class="content">
-	            <div class="container-fluid">
-	                <div class="row">
-	                    <div class="col-md-12">
-	                        <div class="card">
-	                            <div class="card-header" data-background-color="blue">
-	                                <h4 class="title">Corporate</h4>
-	                                <p class="category"></p>
-	                            </div>
-	                            <div class="card-content table-responsive">
-								<div class="card-content table-responsive">
-	                                <table class="table">
-	                                    <thead class="text-primary">
-	                                    	<th>id</th>
+                                       </div>
+                                        </div>
+                                        <div class="panel-body">
+                                           <table  class="table table-bordered " id="example">
+									   <thead>
+										<tr>
+											<th></th>
 	                                    	<th>Corporate Name</th>
 	                                    	<th>Description</th>
 											<th>Action</th>
-	                                    </thead>
-	                                    <tbody>
-	                                        <?php foreach ($corporates as $corporate): ?>
-	                                
-	                                	      <tr>
-	                                        	<td><?= $corporate->id; ?></td>
+											
+										</tr>
+										</thead>
+										<tbody>
+										 <?php foreach ($corporates as $corporate): ?>
+											<tr>
+									            <td><?= $corporate->id; ?></td>
 	                                        	<td><?= $corporate->name; ?></td>
 	                                        	<td><?= $corporate->desc; ?></td>
-												<td class="btn btn-info"><?php echo anchor("corporate/show_corporate_id/".$corporate->id, 'Edit') ;?></td>
-	                                        </tr>
-	                                       <?php endforeach ?>
-	                                        
-	                                        
-	                                    </tbody>
-	                                </table>
+											   <td>
+												<a href="<?= site_url("corporate/show_corporate_id/".$corporate->id); ?>" data-toggle="tooltip"  title="edit" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+			                                    
+												</td>
+											</tr>
+										<?php endforeach;?>
+										</tbody>
+			                      </table>
+                                        </div>
+                                    </div>
+                                </div>
 
-	                            </div>
-
-
+                    </section>
+	        
 
 

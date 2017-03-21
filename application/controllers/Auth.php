@@ -15,32 +15,27 @@ class Auth extends MY_Controller {
 	public function index()
 	{
 
-		if (!$this->ion_auth->logged_in())
-		{
-			// redirect them to the login page
-			redirect('auth/login', 'refresh');
-		}
-		elseif (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
-		{
-			// redirect them to the home page because they must be an administrator to view this
-			return show_error('You must be an administrator to view this page.');
-		}
-		else
-		{
-			// set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
-
+ 	
+            
+             $this->data['token']='home';
+			 $this->_render_page('dashboard', $this->data);
+		
+	}
+   
+   public function users()
+   {
+   		    $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+            $this->data['token'] ='admin';//to set menu item as active
+            $this->data['sub_token'] ='users';//to set submenu item as active
 			//list the users
 			$this->data['users'] = $this->ion_auth->users()->result();
 			foreach ($this->data['users'] as $k => $user)
 			{
 				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
 			}
-
+            
 			$this->_render_page('auth/index', $this->data);
-		}
-	}
-
+   }
 	// log the user in
 	public function login()
 	{
@@ -80,13 +75,13 @@ class Auth extends MY_Controller {
 			$this->data['identity'] = array('name' => 'identity',
 				'id'    => 'identity',
 				'type'  => 'text',
-				'class'=> 'form-control',
+				'class'=> 'form-control input-lg',
 				'placeholder'=>'username',
 				'value' => $this->form_validation->set_value('identity'),
 			);
 			$this->data['password'] = array('name' => 'password',
 				'id'   => 'password',
-				'class'=> 'form-control',
+				'class'=> 'form-control input-lg',
 				'placeholder'=>'password',
 				'type' => 'password',
 			);
@@ -111,6 +106,7 @@ class Auth extends MY_Controller {
 	// change password
 	public function change_password()
 	{
+		$this->data['token']='admin';
 		$this->form_validation->set_rules('old', $this->lang->line('change_password_validation_old_password_label'), 'required');
 		$this->form_validation->set_rules('new', $this->lang->line('change_password_validation_new_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[new_confirm]');
 		$this->form_validation->set_rules('new_confirm', $this->lang->line('change_password_validation_new_password_confirm_label'), 'required');
@@ -133,17 +129,20 @@ class Auth extends MY_Controller {
 				'name' => 'old',
 				'id'   => 'old',
 				'type' => 'password',
+				'class'=> 'form-control input-lg'
 			);
 			$this->data['new_password'] = array(
 				'name'    => 'new',
 				'id'      => 'new',
 				'type'    => 'password',
+				'class'=> 'form-control input-lg',
 				'pattern' => '^.{'.$this->data['min_password_length'].'}.*$',
 			);
 			$this->data['new_password_confirm'] = array(
 				'name'    => 'new_confirm',
 				'id'      => 'new_confirm',
 				'type'    => 'password',
+				'class'=> 'form-control input-lg',
 				'pattern' => '^.{'.$this->data['min_password_length'].'}.*$',
 			);
 			$this->data['user_id'] = array(
@@ -354,7 +353,7 @@ class Auth extends MY_Controller {
 		{
 			// redirect them to the auth page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("auth", 'refresh');
+			redirect("auth/users", 'refresh');
 		}
 		else
 		{
@@ -367,6 +366,7 @@ class Auth extends MY_Controller {
 	// deactivate the user
 	public function deactivate($id = NULL)
 	{
+		$this->data['token']='admin';
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
 			// redirect them to the home page because they must be an administrator to view this
@@ -406,7 +406,7 @@ class Auth extends MY_Controller {
 			}
 
 			// redirect them back to the auth page
-			redirect('auth', 'refresh');
+			redirect('auth/users', 'refresh');
 		}
 	}
 
@@ -414,7 +414,8 @@ class Auth extends MY_Controller {
 	public function create_user()
     {
         $this->data['title'] = $this->lang->line('create_user_heading');
-
+        $this->data['token'] = 'admin';
+        $this->data['sub_token'] = 'users';
         if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
         {
             redirect('auth', 'refresh');
@@ -452,7 +453,7 @@ class Auth extends MY_Controller {
             // check to see if we are creating the user
             // redirect them back to the admin page
             $this->session->set_flashdata('message', $this->ion_auth->messages());
-            redirect("auth", 'refresh');
+            redirect("auth/users", 'refresh');
         }
         else
         {
@@ -464,14 +465,14 @@ class Auth extends MY_Controller {
             $this->data['fullname'] = array(
                 'name'  => 'fullname',
                 'id'    => 'fullname',
-                'class' => 'form-control',
+                'class' => 'form-control input-lg',
                 'type'  => 'text',
                 'value' => $this->form_validation->set_value('fullname'),
             );
             $this->data['identity'] = array(
                 'name'  => 'identity',
                 'id'    => 'identity',
-                 'class' => 'form-control',
+                 'class' => 'form-control input-lg',
                 'type'  => 'text',
                 'value' => $this->form_validation->set_value('identity'),
             );
@@ -480,28 +481,28 @@ class Auth extends MY_Controller {
             $this->data['phone'] = array(
                 'name'  => 'phone',
                 'id'    => 'phone',
-                 'class' => 'form-control',
+                 'class' => 'form-control input-lg',
                 'type'  => 'text',
                 'value' => $this->form_validation->set_value('phone'),
             );
             $this->data['id_number'] = array(
                 'name'  => 'id_number',
                 'id'    => 'id_number',
-                 'class' => 'form-control',
+                 'class' => 'form-control input-lg',
                 'type'  => 'text',
                 'value' => $this->form_validation->set_value('id_number'),
             );
             $this->data['password'] = array(
                 'name'  => 'password',
                 'id'    => 'password',
-                 'class' => 'form-control',
+                 'class' => 'form-control input-lg',
                 'type'  => 'password',
                 'value' => $this->form_validation->set_value('password'),
             );
             $this->data['password_confirm'] = array(
                 'name'  => 'password_confirm',
                 'id'    => 'password_confirm',
-                 'class' => 'form-control',
+                 'class' => 'form-control input-lg',
                 'type'  => 'password',
                 'value' => $this->form_validation->set_value('password_confirm'),
             );
@@ -513,8 +514,8 @@ class Auth extends MY_Controller {
 	// edit a user
 	public function edit_user($id)
 	{
-		$this->data['title'] = $this->lang->line('edit_user_heading');
-
+		$this->data['token'] ='admin';
+        $this->data['sub_token'] ='users';
 		if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin() && !($this->ion_auth->user()->row()->id == $id)))
 		{
 			redirect('auth', 'refresh');
@@ -525,10 +526,10 @@ class Auth extends MY_Controller {
 		$currentGroups = $this->ion_auth->get_users_groups($id)->result();
 
 		// validate form input
-		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'required');
-		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'required');
-		$this->form_validation->set_rules('phone', $this->lang->line('edit_user_validation_phone_label'), 'required');
-		$this->form_validation->set_rules('company', $this->lang->line('edit_user_validation_company_label'), 'required');
+	    $this->form_validation->set_rules('fullname', 'Full name', 'required');
+        $this->form_validation->set_rules('phone', 'Phone Number', 'trim');
+        $this->form_validation->set_rules('designation', 'Designation', 'trim');
+      
 
 		if (isset($_POST) && !empty($_POST))
 		{
@@ -548,11 +549,12 @@ class Auth extends MY_Controller {
 			if ($this->form_validation->run() === TRUE)
 			{
 				$data = array(
-					'first_name' => $this->input->post('first_name'),
-					'last_name'  => $this->input->post('last_name'),
-					'company'    => $this->input->post('company'),
-					'phone'      => $this->input->post('phone'),
-				);
+                'fullname' => $this->input->post('fullname'),
+                'designation' => $this->input->post('designation'),
+                'phone'      => $this->input->post('phone'),
+                'id_number'  => $this->input->post('id_number'),
+                
+            );
 
 				// update the password if it was posted
 				if ($this->input->post('password'))
@@ -586,7 +588,7 @@ class Auth extends MY_Controller {
 				    $this->session->set_flashdata('message', $this->ion_auth->messages() );
 				    if ($this->ion_auth->is_admin())
 					{
-						redirect('auth', 'refresh');
+						redirect('auth/users', 'refresh');
 					}
 					else
 					{
@@ -600,7 +602,7 @@ class Auth extends MY_Controller {
 				    $this->session->set_flashdata('message', $this->ion_auth->errors() );
 				    if ($this->ion_auth->is_admin())
 					{
-						redirect('auth', 'refresh');
+						redirect('auth/users', 'refresh');
 					}
 					else
 					{
@@ -623,41 +625,50 @@ class Auth extends MY_Controller {
 		$this->data['groups'] = $groups;
 		$this->data['currentGroups'] = $currentGroups;
 
-		$this->data['first_name'] = array(
-			'name'  => 'first_name',
-			'id'    => 'first_name',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('first_name', $user->first_name),
-		);
-		$this->data['last_name'] = array(
-			'name'  => 'last_name',
-			'id'    => 'last_name',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('last_name', $user->last_name),
-		);
-		$this->data['company'] = array(
-			'name'  => 'company',
-			'id'    => 'company',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('company', $user->company),
-		);
-		$this->data['phone'] = array(
-			'name'  => 'phone',
-			'id'    => 'phone',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('phone', $user->phone),
-		);
-		$this->data['password'] = array(
-			'name' => 'password',
-			'id'   => 'password',
-			'type' => 'password'
-		);
-		$this->data['password_confirm'] = array(
-			'name' => 'password_confirm',
-			'id'   => 'password_confirm',
-			'type' => 'password'
-		);
-
+		 $this->data['fullname'] = array(
+                'name'  => 'fullname',
+                'id'    => 'fullname',
+                'class' => 'form-control input-lg',
+                'type'  => 'text',
+                'value' => $this->form_validation->set_value('fullname', $user->fullname),
+            );
+            $this->data['identity'] = array(
+                'name'  => 'identity',
+                'id'    => 'identity',
+                 'class' => 'form-control input-lg',
+                'type'  => 'text',
+                'value' => $this->form_validation->set_value('identity', $user->username),
+            );
+            
+     
+            $this->data['phone'] = array(
+                'name'  => 'phone',
+                'id'    => 'phone',
+                 'class' => 'form-control input-lg',
+                'type'  => 'text',
+                'value' => $this->form_validation->set_value('phone', $user->phone),
+            );
+            $this->data['id_number'] = array(
+                'name'  => 'id_number',
+                'id'    => 'id_number',
+                 'class' => 'form-control input-lg',
+                'type'  => 'text',
+                'value' => $this->form_validation->set_value('id_number', $user->id_number),
+            );
+            $this->data['password'] = array(
+                'name'  => 'password',
+                'id'    => 'password',
+                 'class' => 'form-control input-lg',
+                'type'  => 'password',
+                'value' => $this->form_validation->set_value('password'),
+            );
+            $this->data['password_confirm'] = array(
+                'name'  => 'password_confirm',
+                'id'    => 'password_confirm',
+                 'class' => 'form-control input-lg',
+                'type'  => 'password',
+                'value' => $this->form_validation->set_value('password_confirm'),
+            );
 		$this->_render_page('auth/edit_user', $this->data);
 	}
 
@@ -798,4 +809,32 @@ class Auth extends MY_Controller {
 	}
 
 
+   public function backup()
+   {
+         $this->data['token'] = 'admin';
+         $this->data['sub_token'] = 'backup';
+	 	 $this->_render_page('auth/backup', $this->data);
+	 
+   }
+
+    public function start_backup()
+   {
+   	  
+     if(isset($_POST)){
+      // Load the DB utility class
+		$this->load->dbutil();
+
+		// Backup your entire database and assign it to a variable
+		$backup = $this->dbutil->backup();
+
+		// Load the file helper and write the file to your server
+		$this->load->helper('file');
+		 write_file('backups/backup.zip', $backup);
+
+		// Load the download helper and send the file to your desktop
+		$this->load->helper('download');
+		force_download('backup.zip', $backup);
+		$this->redirect('auth/backup','refresh');
+	 }
+	}
 }

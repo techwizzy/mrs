@@ -39,7 +39,7 @@
 	var defaults = {
 		element: 'body',
 		position: null,
-		type: "info",
+		type: "success",
 		allow_dismiss: true,
 		allow_duplicates: true,
 		newest_on_top: false,

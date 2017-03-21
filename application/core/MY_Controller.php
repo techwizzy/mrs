@@ -17,14 +17,16 @@ class MY_Controller extends CI_Controller {
             $this->load->model('patient_model');
             $this->load->model('appointment_model');
             $this->load->model('payment_model');
+            $this->data['link_status']="menu-current";
+            $this->data['active_style']='style="color:orange"';
  }
 
     public function _render_page($view, $data=null, $returnhtml=false)//I think this makes more sense
     {
 
-        $this->load->view('header');
-        $this->load->view('sidebar');
-        $this->load->view('topbar');
+        $this->load->view('header',$this->data);
+       // $this->load->view('sidebar');
+       // $this->load->view('topbar');
         $this->viewdata = (empty($data)) ? $this->data: $data;
 
          $this->load->view($view, $this->viewdata, $returnhtml);
