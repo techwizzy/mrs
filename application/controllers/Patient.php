@@ -15,7 +15,7 @@ class Patient extends MY_Controller {
 	{
          $this->data['token']='home';
          $this->data['sub_token']='patient_search';
-		 $this->data['patient']=$this->patient_model->get_patient()->result();
+		 $this->data['patient']=$this->patient_model->get_patients()->result();
 		 $this->_render_page('patient/patients',$this->data);
 		
 		 
@@ -23,7 +23,8 @@ class Patient extends MY_Controller {
 
 	public function patient_search()
 	{
-
+         $this->data['token']='home';
+         $this->data['sub_token']='patient_search';
 		 $this->data['patient']=$this->patient_model->get_patient()->result();
 		 $this->_render_page('patient/patient_search',$this->data);
 		
@@ -85,12 +86,25 @@ class Patient extends MY_Controller {
 
  public function search_patient()
  {
- 	 if (isset($_GET['term'])){
-            $q = strtolower($_GET['term']);
-            $this->patient_model->get_patient_data($q);
-     }
+ 	       
+            $q = strtolower($this->input->post('term'));
+            $data=$this->patient_model->get_patient_data($q);
+            echo json_encode ($data);
+          
  }
 
 
-
+ public function view($file_no)
+ {
+ 	$this->data['token']='home';
+    $this->data['sub_token']='profile';
+ 	  if(isset($file_no)){
+ 	  	  //fetch the patient data
+ 	  	   $this->data['summary']=$this->patient_model->get_patient($file_no);
+           $this->data['vitals']=$this->patient_model->get_patient_vitals($file_no);
+           $this->data['visits']=$this->patient_model->get_patient_visits($file_no);
+           //var_dump($this->data);
+           $this->_render_page('patient/view');
+ 	  }
+ }
 }

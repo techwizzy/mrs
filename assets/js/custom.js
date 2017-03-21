@@ -16,39 +16,47 @@ $(document).ready(function(){
       $li.addClass("open");
     }
   });
-  $(".tablesearch").hide();
+$(".tablesearch").hide();
 // Search
-function search() {
-  var query_value = $('input#name').val();
-  if(query_value !== ''){
-    $.ajax({
-      type: "POST",
-      url: "<?= site_url('patient/search_patient') ?>",
-      data: "json",
-      cache: false,
-      success: function(resp){
+$('#term').bind('input', function(){
+  $("table#resultTable tbody tr").detach();
+  if($("#term").val().length>3){
+  $.ajax({
+   type: "post",
+   url: "http://localhost/mrs/patient/search_patient",
+   cache: false,    
+   data:'term='+$("#term").val(),
+   success: function(response){
          var trHTML = '';
-                        $.each(resp, function (i, userData) {
-                            for (i = 0; i < resp.UserData.length; i++) {
-                                trHTML +=
-                                    '<tr><td>'
-                                    + resp.userData[i].fname
+         var obj = JSON.parse(response);
+          if(obj.length>0){
+          
+              $.each(obj, function(i,val){ 
+                          
+                      trHTML+='<tr><td><a href="http://localhost/mrs/patient/view/'+val.file_no+'">'
+                                    +val.file_no
+                                    + '</a></td><td>'
+                                    + val.first_name
                                     + '</td><td>'
-                                    + resp.userData[i].gender
-                                    + '</td><td>'
-                                    + resp.userData[i].id
+                                    + val.gender
                                     + '</td></tr>';
-                            }
+                            
                         });
                         //$('#tBody').append(trHTML);
         $("table#resultTable tbody").append(trHTML);
-      }
-    });
-  }return false;    
-}
-
-
+        $(".tablesearch").show();
+     
+       }else{
+        trHTML+='<tr><td colspan="3">No patient data found</td></tr>';
+       $("table#resultTable tbody").append(trHTML);
+       $(".tablesearch").show();
+     }
+    },
+   });
+  }
+  });
 });
 
+ 
 
 

@@ -7,7 +7,7 @@ class patient_model extends CI_Model {
                  $data= array();
                 
         }
-    public function get_patient()
+    public function get_patients()
     {
     	$query=$this->db->get('patient');
     	return $query;
@@ -26,20 +26,27 @@ class patient_model extends CI_Model {
          $this->db->select('*');
          $this->db->like('first_name', $q);
          $query = $this->db->get('patient');
-        
-          if($query->num_rows > 0){
-          foreach ($query->result_array() as $row){
-            $id=$row['file_no'];
-            $name=$row['first_name'];
-            $value1=$row['gender'];
-
-             $row_set[] = array('label' =>$name.' '.$value1,'fname'=>$name,'gender'=>$value1,'id'=>$id); //build an array
-            
-          }
-        }
-
-        echo json_encode($row_set); //format the array into json data
-      
+          return $query->result_array();
+       
     }
-   
+
+    public function get_patient($file_no)
+    {
+        $this->db->where('file_no',$file_no);
+        $query=$this->db->get('patient');
+        return $query->result();
+    }
+
+    public function get_patient_vitals($file_no)
+    {
+        $this->db->where('pid',$file_no);
+        $query=$this->db->get('assessment');
+        return $query->result();
+    }
+    public function get_patient_visits($file_no)
+    {
+        $this->db->where('pid',$file_no);
+        $query=$this->db->get('appointment');
+        return $query->result();
+    }
 }
