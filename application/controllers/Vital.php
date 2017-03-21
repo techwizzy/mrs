@@ -14,6 +14,8 @@ class Vital extends MY_Controller
 
 	public function index1()
 	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='profile';
 		$config = array();
 		$config["base_url"] = base_url()."vital/index1";
 		$config["total_rows"] = $this->vitals->vital_count();

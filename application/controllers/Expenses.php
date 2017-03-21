@@ -13,6 +13,8 @@ class Expenses extends MY_Controller {
 	// retrieving services
 	public function index()
 	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='expenses';
 
 		 $this->data['expenses']=$this->expense_model->get_expenses()->result();
 		 $this->_render_page('expenses/expenses',$this->data);
@@ -25,6 +27,8 @@ class Expenses extends MY_Controller {
 
 	 public function add_expense()
 	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='expenses';
             $date=date('Y-m-d h:m:i');
 			//set the flash data error message if there is one
 			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message'); 

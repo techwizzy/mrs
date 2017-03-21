@@ -31,7 +31,7 @@ class Vitals extends CI_Model
 	{
 		$this->db->select('*');
         $this->db->from('assessment');
-        $this->db->where('pid', $value);
+        $this->db->where('pid', $id);
         $query = $this->db->get();
         $result = $query->result();
         return $result;
