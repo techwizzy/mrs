@@ -14,7 +14,7 @@
 
 
 <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-2.2.4/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.13/af-2.1.3/b-1.2.4/b-colvis-1.2.4/b-flash-1.2.4/b-html5-1.2.4/b-print-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.2.0/r-2.1.1/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.js"></script>
-
+    <script src="<?= base_url() ?>vendors/form-helpers/js/bootstrap-formhelpers.min.js"></script>
     <script src="<?= base_url() ?>assets/js/tables.js"></script>
     <script src="<?= base_url() ?>assets/vendors/fullcalendar/fullcalendar.js"></script>
     <script src="<?= base_url() ?>assets/vendors/fullcalendar/gcal.js"></script>

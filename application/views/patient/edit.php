@@ -44,18 +44,38 @@
                                                     <div class="col-xs-6 col-md-offset-3">
                                                       <div class="col-md-12">
                                                         <h4><strong>Step 1: Basic details</strong></h4>
+                                                         <div class="form-group">
+                                                          <label class="control-label">Previous File No</label>
+                                                          <input  maxlength="100" type="text" required="required" name="prev_file_no" class="form-control" placeholder="Previous file No"  />
+                                                        </div>
                                                         <div class="form-group">
                                                           <label class="control-label">First Name</label>
-                                                          <input  maxlength="100" type="text" required="required" class="form-control" placeholder="Enter First Name"  />
+                                                          <input  maxlength="100" type="text" required="required" name="firstname" class="form-control" placeholder="Enter First Name"  />
                                                         </div>
+                                                          <div class="form-group">
+                                                          <label class="control-label">Surname</label>
+                                                          <input  maxlength="100" type="text" required="required" name="surname" class="form-control" placeholder="Enter surname"  />
+                                                        </div>
+                                                      
                                                         <div class="form-group">
                                                           <label class="control-label">Last Name</label>
-                                                          <input maxlength="100" type="text" required="required" class="form-control" placeholder="Enter Last Name" />
+                                                          <input maxlength="100" type="text" required="required" name="lastname" class="form-control" placeholder="Enter Last Name" />
                                                         </div>
                                                         <div class="form-group">
-                                                          <label class="control-label">Address</label>
-                                                          <textarea required="required" class="form-control" placeholder="Enter your address" ></textarea>
+                                                          <label class="control-label">Age</label>
+                                                          <input maxlength="100" type="text" required="required" name="age" class="form-control"  placeholder="age in years" />
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-2 control-label">Gender</label>
+                                                                <div class="col-md-10">
+                                                                     <label class="radio radio-inline">
+                                                                          <input type="radio" name="gender">Male </label>
+                                                                     <label class="radio radio-inline">
+                                                                          <input type="radio" name="gender">Female </label>
+                                                                </div>
+                                                          </div>
+
+                          
                                                         <button class="btn btn-warning nextBtn  pull-right" type="button" >Next</button>
                                                       </div>
                                                     </div>
@@ -63,14 +83,36 @@
                                                   <div class="row setup-content" id="step-2">
                                                     <div class="col-xs-6 col-md-offset-3">
                                                       <div class="col-md-12">
-                                                        <h3> Step 2</h3>
+                                                        <h3> Step 2: Additional Details</h3>
+                                                      <div class="form-group">
+                                                         <label class="col-xs-3 control-label">Client type</label>
+                                                            <div class="col-xs-3">
+                                                              <label class="radio radio-inline"><input type ="radio"  id="corporate" onclick="javascript:yesnoCheck();" name="type" value="corporate">corporate
+                                                              </label>
+                                                              </div>
+                                                              <div class="col-xs-6">
+                                                                  <label class="radio radio-inline"><input type ="radio"  id="self" onclick="javascript:yesnoCheck();" name="type" value="self bill">Self bill</label>
+                                                                 
+                                                                 <div id="ifYes" style="display:none">
+                                                                   <select name="cname" class="form-control">
+                                                              
+                                                                   <option value=""></option>
+                                                             
+                                                                 </select>                                                
+                                                              </div>
+                                                                </div>
+                                                             </div>
                                                         <div class="form-group">
-                                                          <label class="control-label">Company Name</label>
-                                                          <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name" />
+                                                          <label class="control-label">Corporate Name</label>
+                                                          <input maxlength="200" type="text" name="corporate" class="form-control" placeholder="Enter Company Name" />
+                                                        </div>
+                                                         <div class="form-group">
+                                                          <label class="control-label">phone number</label>
+                                                          <input maxlength="200" type="text" name="corporate" class="form-control" placeholder="Enter Company Name" />
                                                         </div>
                                                         <div class="form-group">
-                                                          <label class="control-label">Company Address</label>
-                                                          <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address"  />
+                                                          <label class="control-label"> Address</label>
+                                                          <textarea class="form-control" name="address"></textarea>
                                                         </div>
                                                         <button class="btn btn-warning nextBtn  pull-right" type="button" >Next</button>
                                                       </div>
@@ -79,8 +121,16 @@
                                                   <div class="row setup-content" id="step-3">
                                                     <div class="col-xs-6 col-md-offset-3">
                                                       <div class="col-md-12">
-                                                        <h3> Step 3</h3>
-                                                        <button class="btn btn-success  pull-right" type="submit">Submit</button>
+                                                        <h3> Step 3: Patient history</h3>
+                                                         <div class="form-group">
+                                                          <label class="control-label">Medical History</label>
+                                                          <textarea class="form-control" name="med_history"></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                          <label class="control-label">Allergies</label>
+                                                          <textarea class="form-control" name="address"></textarea>
+                                                        </div>
+                                                        <button class="btn btn-success  pull-right" type="submit">Add patient</button>
                                                       </div>
                                                     </div>
                                                   </div>

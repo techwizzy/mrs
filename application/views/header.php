@@ -14,7 +14,7 @@
   
 
     <link href="<?= base_url() ?>assets/css/jquery-ui.css" rel="stylesheet" media="screen">
-
+     <link href="<?= base_url() ?>assets/vendors/form-helpers/css/bootstrap-formhelpers.min.css" rel="stylesheet">
     <!-- Bootstrap -->
     <link href="<?= base_url() ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?= base_url() ?>assets/vendors/fullcalendar/fullcalendar.css" rel="stylesheet" media="screen">
