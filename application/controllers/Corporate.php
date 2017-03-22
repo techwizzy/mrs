@@ -12,9 +12,9 @@ class Corporate extends MY_Controller {
 	{
 
 
-     $this->data['token'] = 'admin';
-     $this->data['sub_token'] = 'corporates';
-		 $this->data['corporates']=$this->corporate_model->get_corporates()->result();
+     	$this->data['token'] = 'admin';
+     	$this->data['sub_token'] = 'corporates';
+		$this->data['corporates']=$this->corporate_model->get_corporates()->result();
 		 $this->_render_page('corporate/index',$this->data);
 		
 		 
@@ -25,7 +25,7 @@ class Corporate extends MY_Controller {
 		$data['error_message'] = '';
 
 		$this->data['token'] = 'admin';
-    $this->data['sub_token'] = 'corporates';
+    	$this->data['sub_token'] = 'corporates';
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
@@ -37,14 +37,14 @@ class Corporate extends MY_Controller {
 	}
 	else
 	{
-		$this->data['corporates']=$this->corporate_model->insert();
-		$this->_render_page('corporate/index', $this->data);
+		$this->corporate_model->insert();
+		$this->index();
 	}
 	}
 	public function show_corporate_id()
 	{
 		$this->data['token'] = 'admin';
-    $this->data['sub_token'] = 'corporates';
+    	$this->data['sub_token'] = 'corporates';
 		$id = $this->uri->segment(3);
 		$data['corporate'] = $this->corporate_model->show_corporate();
 		$data['single_corporate'] = $this->corporate_model->show_corporate_id($id);

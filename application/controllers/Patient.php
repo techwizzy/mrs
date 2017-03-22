@@ -15,7 +15,7 @@ class Patient extends MY_Controller {
 	{
          $this->data['token']='home';
          $this->data['sub_token']='patient_search';
-		 $this->data['patient']=$this->patient_model->get_patient()->result();
+		 $this->data['patient']=$this->patient_model->get_patients()->result();
 		 $this->_render_page('patient/patients',$this->data);
 		
 		 
@@ -98,6 +98,12 @@ class Patient extends MY_Controller {
  {
  	$this->data['token']='home';
     $this->data['sub_token']='profile';
+    //setting cookie
+	$patient_data = array(
+			'id' => $file_no,
+			'date' => date('Y-M-D H:m:s')
+			);
+	$this->session->set_userdata($patient_data);
  	  if(isset($file_no)){
  	  	  //fetch the patient data
  	  	   $this->data['summary']=$this->patient_model->get_patient($file_no);
@@ -130,7 +136,7 @@ public function edit_patient($id)
  {
 		 $this->data['token']='home';
          $this->data['sub_token']='patient';
-         $this->data['patient']=$this->patient_model->get_patient()->result();
+         $this->data['patient']=$this->patient_model->get_patients()->result();
 		 $this->_render_page('patient/all',$this->data);	
  }
 }

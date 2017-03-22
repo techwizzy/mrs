@@ -75,10 +75,15 @@ class Services extends MY_Controller {
         $data['service_name']=$this->input->post('service_name',true);
         $data['service_cost']=$this->input->post('service_cost',true);
         $id = $this->session->userdata('id');
-
-        $this->service_model->insert_register($data,$id);
-        $this->index();
+        $dateit = date("Y-m-d H:i:s");
+        $this->service_model->insert_register($data, $id, $dateit);
     } 
-}
+	     
+	}
+	public function waiting()
+	{
+		$id = $this->session->userdata('id');
+		$this->service_model->waiting_list($id);
+	}
 
 }

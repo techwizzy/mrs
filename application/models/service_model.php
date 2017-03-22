@@ -53,7 +53,7 @@ class Service_model extends CI_Model {
         $result = $query->result();
         return $result;
     }
-    public function insert_register($data, $id)
+    public function insert_register($data, $id, $dateit)
     {
         if (isset($data['service_name']) && is_array($data['service_name'])):
             foreach ( $data['service_name'] as $key=>$value ):
@@ -61,10 +61,37 @@ class Service_model extends CI_Model {
                    'service_name'=>$data['service_name'][$key],
                    'service_cost'=>$data['service_cost'][$key],
                    'file_no' => $id,
-                   'date_of_service' => date("Y-m-d H:i:s")// assuming this are the same for all rows?
+                   'date_of_service' => $dateit
                 ));
             endforeach;
         endif; 
+    }
+    public function selected($id, $date)
+    {
+        $this->db->select_sum('service_cost');
+        $this->db->from('patient_service');
+        $this->db->where('file_no', $id);
+        $this->db->where('date_of_service', $date);
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
+    public function waiting_list($id)
+    {
+       $this->db->select('first_name,age,address');
+       $this->db->where('file_no', $id);
+        $q = $this->db->get('patient')->result(); // get result from table
+        foreach ($q as $r) { // loop over results
+            $data = array(
+                'name' => $r->first_name,
+                'age'  => $r->age,
+                'address'=> $r->address,
+                'pid'   => $id,
+                'wdate' => date("Y-m-d H:m:s") 
+                'status'=> "waiting",
+                );
+        $this->db->insert('waiting_list', $data); // insert each row to country table
+    }
     }
 } 
 

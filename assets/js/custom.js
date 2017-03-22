@@ -121,6 +121,24 @@ var navListItems = $('div.setup-panel div a'),
   });
 
   $('div.setup-panel div a.btn-warning').trigger('click');
+
+    $("input[type=checkbox]").on("click", function(){
+      var favorite = [];
+      $.each($("input:checked"), function(){
+        favorite.push($(this).val());
+        
+      });
+      $(".selected").html("<h5><b>"+favorite.join("<br><hr>")+"</b></h5>");
+    });
+    $("input[type=checked]").on("click", function(){
+      var total = 0;
+      var valuetwo = checkbox.getAttribute("value2");
+      $.each($("input:checked"), function(){
+        total += parseFloat($(this).valuetwo);
+        
+      });
+      $(".total").html("<h5><b>"+total+"</b></h5>");
+    });
 });
 
  

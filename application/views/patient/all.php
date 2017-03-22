@@ -29,7 +29,7 @@
 	                                        	
 	                                	      <tr>
 	                                	      <td><?= $no; ?></td>
-	                                        	<td><?php echo anchor("payment/list1/".$patient->file_no, $patient->file_no ) ;?></td>
+	                                        	<td><?php echo anchor("patient/view/".$patient->file_no, $patient->file_no ) ;?></td>
 	                                        	<td><?php echo anchor("payment/list1/".$patient->file_no, $patient->first_name ) ;?></td>
 	                                        	<td><?= $patient->gender; ?></td>
 												<td><?php echo anchor("patient/edit_patient/".$patient->file_no, 'Edit') ;?></td>
