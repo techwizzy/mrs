@@ -1,3 +1,4 @@
+
 <section >                          <div class="col-md-3">
                                     <div class="sidebar content-box-large" style="display: block;">
                                         <ul class="nav">
@@ -11,7 +12,6 @@
                                   </div>
                                     <div class="col-md-9">
                                     <div class="content-box">
-
                                         <div class="panel-heading">
                                                    <div class="box-tools pull-right" style="margin-right:50px;">
                                     <div class="btn-group">
@@ -132,7 +132,6 @@
 
              <?php echo form_hidden('id', $user->id);?>
              <?php echo form_hidden($csrf); ?>
-
             <div class="panel-footer" style="background-color:#fff">
                <div class="form-group label-floating">
                   <button type="submit" class="btn btn-warning ">Save User </button>

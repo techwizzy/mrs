@@ -121,7 +121,6 @@ var navListItems = $('div.setup-panel div a'),
   });
 
   $('div.setup-panel div a.btn-warning').trigger('click');
-
 });
 
  

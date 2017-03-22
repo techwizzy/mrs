@@ -11,7 +11,8 @@ class Services extends MY_Controller {
 	// retrieving services
 	public function index()
 	{
-
+		$this->data['token']='home';
+    	$this->data['sub_token']='profile';
 		 $this->data['services']=$this->service_model->get_services()->result();
 		 $this->_render_page('services/index',$this->data);
 		
@@ -19,6 +20,8 @@ class Services extends MY_Controller {
 	}
 	public function create()
 	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='profile';
 		$data['error_message'] = '';
 		$this->load->helper('form');
 		$this->load->library('form_validation');
@@ -39,6 +42,8 @@ class Services extends MY_Controller {
 	}
 	public function show_service_id()
 	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='profile';
 		$id = $this->uri->segment(3);
 		$data['service'] = $this->service_model->show_service();
 		$data['single_service'] = $this->service_model->show_service_id($id);
@@ -46,8 +51,9 @@ class Services extends MY_Controller {
 	}
 	public function edit()
 	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='profile';
 		$id = $this->input->post('service_id');
-
 		$data = array(
 			'service_name' => $this->input->post('service_name'),
             'service_cat'  => $this->input->post('service_category'),
@@ -56,5 +62,23 @@ class Services extends MY_Controller {
 		$this->service_model->edit($id,$data);
 		$this->index();
 	}
+	public function register()
+	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='profile';
+		$this->data['services']=$this->service_model->get_services()->result();
+		$this->_render_page('services/register',$this->data);
+		$data=array();
+	
+
+    if ($this->input->post()) {
+        $data['service_name']=$this->input->post('service_name',true);
+        $data['service_cost']=$this->input->post('service_cost',true);
+        $id = $this->session->userdata('id');
+
+        $this->service_model->insert_register($data,$id);
+        $this->index();
+    } 
+}
 
 }

@@ -10,8 +10,10 @@ class Corporate extends MY_Controller {
 	// retrieving corporates
 	public function index()
 	{
-         $this->data['token'] = 'admin';
-         $this->data['sub_token'] = 'corporates';
+
+
+     $this->data['token'] = 'admin';
+     $this->data['sub_token'] = 'corporates';
 		 $this->data['corporates']=$this->corporate_model->get_corporates()->result();
 		 $this->_render_page('corporate/index',$this->data);
 		
@@ -19,13 +21,15 @@ class Corporate extends MY_Controller {
 	}
 	public function create()
 	{
+
+		$data['error_message'] = '';
+
 		$this->data['token'] = 'admin';
-        $this->data['sub_token'] = 'corporates';
+    $this->data['sub_token'] = 'corporates';
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('corporate_name','Corporate Name', 'required');
-		$this->form_validation->set_rules('corporate_desc','Corporate Description', 'required');
 	if ($this->form_validation->run() === FALSE) 
 	{
 		$this->data['error_message'] = validation_errors();
@@ -40,7 +44,7 @@ class Corporate extends MY_Controller {
 	public function show_corporate_id()
 	{
 		$this->data['token'] = 'admin';
-         $this->data['sub_token'] = 'corporates';
+    $this->data['sub_token'] = 'corporates';
 		$id = $this->uri->segment(3);
 		$data['corporate'] = $this->corporate_model->show_corporate();
 		$data['single_corporate'] = $this->corporate_model->show_corporate_id($id);
@@ -49,6 +53,8 @@ class Corporate extends MY_Controller {
 	//edit corporate field
 	public function edit()
 	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='profile';
 		$id = $this->input->post('corporate_id');
 
 		$data = array(

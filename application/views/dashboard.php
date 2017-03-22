@@ -4,7 +4,8 @@
                                         <ul class="nav">
                                             <!-- Main menu -->
                                             <li class="current"><a href="index.html"><i class="glyphicon glyphicon-home"></i> Dashboard</a></li>
-                                            <li><a href="<?= site_url('patient'); ?>"><i class="glyphicon glyphicon-search"></i> Find patient</a></li>
+                                            <li><a href="<?= site_url('patient/all'); ?>"><i class="glyphicon glyphicon-user"></i>Patients</a></li>
+                                            <li><a href="<?= site_url('patient/index'); ?>"><i class="glyphicon glyphicon-search"></i> Find patient</a></li>
                                             <li><a href="new_patient.html"><i class="glyphicon glyphicon-plus-sign"></i> Register patient</a></li>
                             
                                         </ul>

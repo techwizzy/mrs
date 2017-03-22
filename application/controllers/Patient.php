@@ -15,7 +15,7 @@ class Patient extends MY_Controller {
 	{
          $this->data['token']='home';
          $this->data['sub_token']='patient_search';
-		 $this->data['patient']=$this->patient_model->get_patients()->result();
+		 $this->data['patient']=$this->patient_model->get_patient()->result();
 		 $this->_render_page('patient/patients',$this->data);
 		
 		 
@@ -126,5 +126,11 @@ public function edit_patient($id)
       $this->data['patient']=$this->patient_model->get_patient($id);    
       $this->_render_page('patient/edit',$this->data);    
  }
-
+ public function all()
+ {
+		 $this->data['token']='home';
+         $this->data['sub_token']='patient';
+         $this->data['patient']=$this->patient_model->get_patient()->result();
+		 $this->_render_page('patient/all',$this->data);	
+ }
 }

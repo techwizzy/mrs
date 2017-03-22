@@ -27,4 +27,13 @@ class Vitals extends CI_Model
 		}
 		return false;
 	}
+	public function fetch($id)
+	{
+		$this->db->select('*');
+        $this->db->from('assessment');
+        $this->db->where('pid', $id);
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+	}
 }

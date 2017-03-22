@@ -12,12 +12,14 @@ class Appointment extends MY_Controller
 	}
 	public function index()
 	{
-		$id = $this->uri->segment(3);
+		$this->data['token']='appointment';
+   		$id = $this->uri->segment(3);
 		$data['single_appointment'] = $this->appointment_model->get_appointment($id);
 		$this->_render_page('appointment/create', $data);
 	}
 	public function create()
 	{
+		$this->data['token']='appointment';
 		$data['error_message'] = '';
 		$this->load->helper('form');
 		$this->load->library('form_validation');

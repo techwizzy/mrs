@@ -15,7 +15,7 @@
                            
                          <!-- <div id="infoMessage"><?php echo $message;?></div> -->
                          <?php echo validation_errors(); ?>
-                        <?php echo form_open("payment/cash");?>
+                        <?php echo form_open("payment/creditinsert");?>
                             <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
@@ -29,7 +29,9 @@
 
                               <div class="form-group label-floating">
                                   <label class="control-label">Patient</label>
-                                  <input type="text" name="Patient_anme" class="form-control" >
+                                  <input type="text" name="Patient_anme" class="form-control" value="<?php foreach ($patient as $p) {
+                                    echo $p->first_name;
+                                  }?>" >
                               </div>
                               </div>
                             </div>

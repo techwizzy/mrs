@@ -19,8 +19,7 @@
                           <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group label-floating">
-                                          <label class="control-label" id="hide">Service Id</label>
-                                          <input type="text" id="hide" name="service_id" class="form-control" value="<?php echo $service->service_id;?>" >
+                                          <input type="hidden" id="hide" name="service_id" class="form-control" value="<?php echo $service->service_id;?>" >
                                         </div>
                                       </div>
                               </div>

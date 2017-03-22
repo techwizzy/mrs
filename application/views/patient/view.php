@@ -87,6 +87,7 @@
                                          <div class="alert alert-info">patient visits (including scheduled Appointments)</div>
                                         </div>
                                         <div class="panel-body">
+
                                         <div id="visits"></div>
                                         </div>
                                 </div>

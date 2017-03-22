@@ -1,5 +1,6 @@
 
                            <section >
+
                                             <div class="col-md-3">
                                                <div class="sidebar content-box" style="display: block;">
                                                          <ul class="nav">
@@ -139,8 +140,7 @@
                                   <input class="form-control" name="corporate"  type="text" value="<?php echo set_value('corporate'); ?>" />
                                   </div>
                                   </div>
-
-                                 
+     
                                                     
 
                                    <div class="row">
