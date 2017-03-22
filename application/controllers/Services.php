@@ -69,15 +69,17 @@ class Services extends MY_Controller {
 		$this->data['services']=$this->service_model->get_services()->result();
 		$this->_render_page('services/register',$this->data);
 		$data=array();
-	
 
     if ($this->input->post()) {
         $data['service_name']=$this->input->post('service_name',true);
         $data['service_cost']=$this->input->post('service_cost',true);
         $id = $this->session->userdata('id');
-        $dateit = date("Y-m-d H:i:s");
+        $dateit = date("Y-m-d");
         $this->service_model->insert_register($data, $id, $dateit);
+
+        	$this->service_model->selected($id, $dateit);
     } 
+    
 	     
 	}
 	public function waiting()

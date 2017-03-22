@@ -70,27 +70,39 @@ class Service_model extends CI_Model {
     {
         $this->db->select_sum('service_cost');
         $this->db->from('patient_service');
-        $this->db->where('file_no', $id);
-        $this->db->where('date_of_service', $date);
+        $array = array('file_no'=> $id, 'date_of_service' => $date);
+
+        $this->db->where($array);
+        
         $query = $this->db->get();
         $result = $query->result();
-        return $result;
+        foreach ($result as $v) {
+            $data = array(
+                'pid' => $id ,
+                'ref_no'=>"Ref:".random_string('alnum',5),
+                'total_amount'=> $v->service_cost,
+                'payment_status' => "unpaid", 
+                );
+            $this->db->insert('transaction', $data);
+        }
     }
     public function waiting_list($id)
     {
        $this->db->select('first_name,age,address');
        $this->db->where('file_no', $id);
-        $q = $this->db->get('patient')->result(); // get result from table
-        foreach ($q as $r) { // loop over results
+        $q = $this->db->get('patient')->result(); 
+        // get result from table
+        foreach ($q as $r) { 
+        // loop over results
             $data = array(
                 'name' => $r->first_name,
                 'age'  => $r->age,
                 'address'=> $r->address,
                 'pid'   => $id,
-                'wdate' => date("Y-m-d H:m:s") 
+                'wdate' => date("Y-m-d H:m:s"),
                 'status'=> "waiting",
                 );
-        $this->db->insert('waiting_list', $data); // insert each row to country table
+        $this->db->insert('waiting_list', $data); 
     }
     }
 } 
