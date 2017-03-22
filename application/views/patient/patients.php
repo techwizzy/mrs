@@ -1,7 +1,7 @@
 
                            <section >
                                   <div class="col-md-3">
-                                     <div class="sidebar content-box" style="display: block;">
+                                     <div class="sidebar content-box-large" style="display: block;">
                                         <ul class="nav">
                                             <!-- Main menu -->
                                             <li class="current"><a href="<?= site_url('auth/index') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-user"></i> Dashboard</a></li>

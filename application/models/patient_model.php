@@ -7,7 +7,7 @@ class patient_model extends CI_Model {
                  $data= array();
                 
         }
-    public function get_patient()
+    public function get_patients()
     {
     	$query=$this->db->get('patient');
     	return $query;
@@ -20,5 +20,51 @@ class patient_model extends CI_Model {
            return TRUE;
                  }
         return FALSE;
+    }
+   public function get_patient_data($q)
+   {
+         $this->db->select('*');
+         $this->db->like('first_name', $q);
+         $query = $this->db->get('patient');
+          return $query->result_array();
+       
+    }
+
+    public function get_patient($file_no)
+    {
+        $this->db->where('file_no',$file_no);
+        $query=$this->db->get('patient');
+        return $query->result();
+    }
+
+    public function get_patient_vitals($file_no)
+    {
+        $this->db->where('pid',$file_no);
+        $query=$this->db->get('assessment');
+        return $query->result();
+    }
+    public function get_patient_visits($file_no)
+    {
+        $this->db->where('pid',$file_no);
+        $query=$this->db->get('appointment');
+        return $query->result();
+    }
+
+       public function get_visit_events($file_no)
+    {
+        $this->db->where('pid',$file_no);
+        $query=$this->db->get('appointment');
+       foreach ($query->result() as $row) {
+        $visit = array();
+        $visit['id'] = $row['id'];
+        $visit['title'] = $row['desc'];
+        $visit['start'] = $row['start'];
+        $visit['end'] = $row['end'];
+        $visit['allDay'] = false;
+
+        // Merge the event array into the return array
+        array_push($events, $visit);
+       }
+       return $events;
     }
 }

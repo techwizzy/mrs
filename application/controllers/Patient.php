@@ -103,9 +103,28 @@ class Patient extends MY_Controller {
  	  	   $this->data['summary']=$this->patient_model->get_patient($file_no);
            $this->data['vitals']=$this->patient_model->get_patient_vitals($file_no);
            $this->data['visits']=$this->patient_model->get_patient_visits($file_no);
-           //var_dump($this->data);
-           $this->_render_page('patient/view');
+           $this->data['file_no']=$file_no;
+           // var_dump($this->data);
+           $this->_render_page('patient/view',$this->data);
  	  }
+ }
+
+ public function get_visit_events($id)
+ {
+ 	       if(isset($id)){
+ 	       	   $events=$this->patient_model->get_visit_events($id);
+ 	       	    echo json_encode($events);
+ 	       }
+         
+          
+ }
+public function edit_patient($id)
+ {
+ 	 $this->data['file_no']=$id;
+ 	  $this->data['token']='home';
+      $this->data['sub_token']='profile';     
+      $this->data['patient']=$this->patient_model->get_patient($id);    
+      $this->_render_page('patient/edit',$this->data);    
  }
  public function all()
  {
