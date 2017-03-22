@@ -1,17 +1,16 @@
-<section >
-                                  <div class="col-md-3">
-                                      <div class="sidebar content-box" style="display: block;">
+<section >                          <div class="col-md-3">
+                                    <div class="sidebar content-box-large" style="display: block;">
                                         <ul class="nav">
                                             <!-- Main menu -->
                                             <li class="current"><a href="<?= site_url('auth/users') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-user"></i> User Management</a></li>
-                                            <li><a href="<?= site_url('corporate/corporates') ?>" <?php if (isset($link_status) && $sub_token=='corporates'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-folder-open"></i> Insurance Companies</a></li>
+                                            <li><a href="<?= site_url('corporate/index') ?>" <?php if (isset($link_status) && $sub_token=='corporates'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-folder-open"></i> Insurance Companies</a></li>
                                             <li><a href="<?= site_url('auth/backup') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-upload"></i> Backup</a></li>
                             
                                         </ul>
                                      </div>
                                   </div>
                                     <div class="col-md-9">
-                                    <div class="content-box-large">
+                                    <div class="content-box">
 
                                         <div class="panel-heading">
                                                    <div class="box-tools pull-right" style="margin-right:50px;">
@@ -131,8 +130,8 @@
 
                             <?php endif ?>
 
-      <?php echo form_hidden('id', $user->id);?>
-      <?php echo form_hidden($csrf); ?>
+             <?php echo form_hidden('id', $user->id);?>
+             <?php echo form_hidden($csrf); ?>
 
             <div class="panel-footer" style="background-color:#fff">
                <div class="form-group label-floating">

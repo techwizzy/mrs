@@ -1,7 +1,7 @@
 
             <section >
                                   <div class="col-md-3">
-                                    <div class="sidebar content-box" style="display: block;">
+                                    <div class="sidebar content-box-large" style="display: block;">
                                         <ul class="nav">
                                             <!-- Main menu -->
                                             <li class="current"><a href="<?= site_url('auth/users') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-user"></i> User Management</a></li>
@@ -12,7 +12,7 @@
                                      </div>
                                   </div>
                                     <div class="col-md-9">
-                                    <div class="content-box-large">
+                                    <div class="content-box">
                                         <div class="panel-heading">
                                         <h4 class="title">Edit Corporate</h4>
                                     <p class="category">Please Edit Corporate Information Below</p>

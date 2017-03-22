@@ -49,4 +49,22 @@ class patient_model extends CI_Model {
         $query=$this->db->get('appointment');
         return $query->result();
     }
+
+       public function get_visit_events($file_no)
+    {
+        $this->db->where('pid',$file_no);
+        $query=$this->db->get('appointment');
+       foreach ($query->result() as $row) {
+        $visit = array();
+        $visit['id'] = $row['id'];
+        $visit['title'] = $row['desc'];
+        $visit['start'] = $row['start'];
+        $visit['end'] = $row['end'];
+        $visit['allDay'] = false;
+
+        // Merge the event array into the return array
+        array_push($events, $visit);
+       }
+       return $events;
+    }
 }
