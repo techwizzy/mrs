@@ -11,25 +11,10 @@ class Payment extends MY_Controller {
 	public function index()
 	{
 		$this->data['token']='home';
-    	$this->data['sub_token']='profile';
+    	$this->data['sub_token']='payment';
 		$id = $this->session->userdata('id');
 		$data['patient'] = $this->payment_model->show($id);
 		$this->_render_page('payments/method', $data);
-	}
-	public function list1()
-	{
-		$this->data['token']='home';
-    	$this->data['sub_token']='profile';
-		$id = $this->uri->segment(3);
-		$patient_data = array(
-			'id' => $this->uri->segment(3),
-			'date' => date('Y-M-D H:m:s')
-			);
-		$this->session->set_userdata($patient_data);
-		$data["results"] = $this->vitals->fetch($id);
-		$data["links"] = $this->pagination->create_links();
-		$data['patient'] = $this->payment_model->show($id);
-		$this->_render_page('list', $data);
 	}
 	public function cash()
 	{
@@ -39,14 +24,13 @@ class Payment extends MY_Controller {
 		$date=date('Y-M-D H:m:s', strtotime($this->input->post('date')));
 		$data['patient'] = $this->payment_model->show($id);
 		$data['single_bill'] = $this->payment_model->show_id($id);
-		//var_dump($data);
 		$this->_render_page('payments/cash', $data);
 	}
 	public function check()
 	{
 		$this->data['token']='home';
     	$this->data['sub_token']='profile';
-		$id = $this->uri->segment(3);
+		$id = $this->session->userdata('id');
 		//save date to the db
 		$date=date('Y-M-D H:m:s', strtotime($this->input->post('date')));
 		$data['patient'] = $this->payment_model->show($id);
@@ -57,7 +41,7 @@ class Payment extends MY_Controller {
 	{
 		$this->data['token']='home';
     	$this->data['sub_token']='profile';
-		$id = $this->uri->segment(3);
+		$id = $this->session->userdata('id');
 		//save date to the db
 		$date=date('Y-M-D H:m:s', strtotime($this->input->post('date')));
 		$data['patient'] = $this->payment_model->show($id);
@@ -68,7 +52,7 @@ class Payment extends MY_Controller {
 	{
 		$this->data['token']='home';
     	$this->data['sub_token']='profile';
-		$id = $this->uri->segment(3);
+		$id = $this->session->userdata('id');
 		//save date to the db
 		$date=date('Y-M-D H:m:s', strtotime($this->input->post('date')));
 		$data['patient'] = $this->payment_model->show($id);
@@ -79,7 +63,7 @@ class Payment extends MY_Controller {
 	{
 		$this->data['token']='home';
     	$this->data['sub_token']='profile';
-		$id = $this->uri->segment(3);
+		$id = $this->session->userdata('id');
 		//save date to the db
 		$date=date('Y-M-D H:m:s', strtotime($this->input->post('date')));
 		$data['patient'] = $this->payment_model->show($id);
@@ -89,22 +73,105 @@ class Payment extends MY_Controller {
 	public function cashinsert()
 	{
 		$this->data['token']='home';
-    	$this->data['sub_token']='profile';
+    	$this->data['sub_token']='payment';
 		$data['error_message'] = '';
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('service_name','Service Name', 'required');
-		$this->form_validation->set_rules('service_category','Service Category', 'required');
-		$this->form_validation->set_rules('service_cost','Service Cost', 'required');
+		$this->form_validation->set_rules('amount_paid','Amount Paid', 'required');
 	if ($this->form_validation->run() === FALSE) 
 	{
 		$this->data['error_message'] = validation_errors();
-		$this->_render_page('services/create', $this->data);
+		$this->_render_page('payments/cash', $this->data);
 	}
 	else
 	{
-		$this->data['services']=$this->service_model->insert();
+		$id = $this->session->userdata('id');
+		$this->service_model->insertcash($id);
+		$this->index();
+	}
+	}
+	public function checkinsert()
+	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='payment';
+		$data['error_message'] = '';
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('amount_paid','Amount Paid', 'required');
+	if ($this->form_validation->run() === FALSE) 
+	{
+		$this->data['error_message'] = validation_errors();
+		$this->_render_page('payments/check', $this->data);
+	}
+	else
+	{
+		$id = $this->session->userdata('id');
+		$this->service_model->insertcheck($id);
+		$this->_render_page('services/index', $this->data);
+	}
+	}
+	public function corporateinsert()
+	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='payment';
+		$data['error_message'] = '';
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('amount_paid','Amount Paid', 'required');
+	if ($this->form_validation->run() === FALSE) 
+	{
+		$this->data['error_message'] = validation_errors();
+		$this->_render_page('payments/corporate', $this->data);
+	}
+	else
+	{
+		$id = $this->session->userdata('id');
+		$this->service_model->insertcorporate($id);
+		$this->_render_page('services/index', $this->data);
+	}
+	}
+	public function creditinsert()
+	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='payment';
+		$data['error_message'] = '';
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('amount_paid','Amount Paid', 'required');
+	if ($this->form_validation->run() === FALSE) 
+	{
+		$this->data['error_message'] = validation_errors();
+		$this->_render_page('payments/credit', $this->data);
+	}
+	else
+	{
+		$id = $this->session->userdata('id');
+		$this->service_model->insertcredit($id);
+		$this->_render_page('services/index', $this->data);
+	}
+	}
+	public function mpesainsert()
+	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='payment';
+		$data['error_message'] = '';
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('amount_paid','Amount Paid', 'required');
+	if ($this->form_validation->run() === FALSE) 
+	{
+		$this->data['error_message'] = validation_errors();
+		$this->_render_page('payments/mpesa', $this->data);
+	}
+	else
+	{
+		$id = $this->session->userdata('id');
+		$this->service_model->insertcredit($id);
 		$this->_render_page('services/index', $this->data);
 	}
 	}

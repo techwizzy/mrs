@@ -86,6 +86,13 @@ class Services extends MY_Controller {
 	{
 		$id = $this->session->userdata('id');
 		$this->service_model->waiting_list($id);
+		$this->show_list();
 	}
-
+	public function show_list()
+	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='profile';
+		$this->data['patient']=$this->service_model->get_list()->result();
+		$this->_render_page('patient/waiting', $this->data);
+	}
 }

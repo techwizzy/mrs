@@ -27,22 +27,31 @@
                                                           <?php echo form_open("services/register");?>
                                                           <table class="table table-bordered table-sm">
                                                           <tbody>
-                                                          <?php foreach ($services as $service): ?>
+                                                          
+                                                          <?php
+                                                          $i=0;
+                                                          foreach ($services as $service){
+                                                            ++$i;
+
+                                                          ?>
+
                                                             <tr>
                                                               <td>
                                                                 <div class="checkbox">
                                                                   <label>
-                                                                    <input type="checkbox" name="service_name[]" value="<?php echo $service->service_name;?>" value2 = "<?php echo $service->service_cost;?>" /> 
-                                                                    <input type="hidden" name="service_cost[]" value="<?php echo $service->service_cost;?>" /> 
+                                                    
+                                                                  <input type="checkbox" id="<?= "chbx[".$i."]";?>" name="service_name[]" value="<?php echo $service->service_name;?>" value2 = "<?php echo $service->service_cost;?>" />
+                                                                    <input type="hidden" class="cost" name="service_cost[]" value="<?php echo $service->service_cost;?>" /> 
                                                                   </label>
                                                                 </div>
                                                               </td>
                                                               <td><?= $service->service_name?></td>
                                                             </tr>
-                                                          <?php endforeach ?>
+                                                            
+                                                          <?php } ?>
                                                           </tbody>
                                                         </table>
-                                                          <p><button name="select" type="submit" class="btn btn-info pull-right">Register Service</button></p>
+                                                          <p><button name="select" type="submit" id="show" class="btn btn-info pull-right">Register Service</button></p>
                                                            </div>
                                                           <?php echo form_close();?>
                                                           <br>
@@ -60,7 +69,8 @@
                                                                 <div class="selected"></div>
                                                               </td>
                                                               <td>
-                                                              <div class="total"></div>
+                                                              <div id="total" class="total">
+                                                              </div>
                                                               </td>
                                                             </tr>
                                                           </tbody>

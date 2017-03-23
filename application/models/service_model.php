@@ -78,6 +78,7 @@ class Service_model extends CI_Model {
         $result = $query->result();
         foreach ($result as $v) {
             $data = array(
+                'date'=> $date,
                 'pid' => $id ,
                 'ref_no'=>"Ref:".random_string('alnum',5),
                 'total_amount'=> $v->service_cost,
@@ -104,6 +105,10 @@ class Service_model extends CI_Model {
                 );
         $this->db->insert('waiting_list', $data); 
     }
+    }
+    public function get_list()
+    {
+        return $this->db->get('waiting_list');
     }
 } 
 

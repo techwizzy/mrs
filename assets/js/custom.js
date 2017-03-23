@@ -130,15 +130,21 @@ var navListItems = $('div.setup-panel div a'),
       });
       $(".selected").html("<h5><b>"+favorite.join("<br><hr>")+"</b></h5>");
     });
-    $("input[type=checked]").on("click", function(){
+    $("input[type=checkbox]").on("click", function(){
       var total = 0;
-      var valuetwo = checkbox.getAttribute("value2");
       $.each($("input:checked"), function(){
-        total += parseFloat($(this).valuetwo);
-        
+        for (var i =1 ; i >= 0; i++) {
+          x = document.getElementById("chbx["+i+"]").getAttribute("value2");
+          total += parseFloat(x);
+           }
       });
       $(".total").html("<h5><b>"+total+"</b></h5>");
+      document.getElementById("total").innerHTML = total;
     });
+    // $(".total").hide();
+    // $("#show").click(function(){
+    //   $(".total").show();
+    // })
 });
 
  

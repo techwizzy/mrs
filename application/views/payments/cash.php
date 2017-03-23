@@ -1,14 +1,28 @@
-  <div class="content">
-        <div class="container-fluid">
-              <div class="row">
-                    <div class="col-md-2">
-                    </div>
+
+ <section style="margin-top:30px">
+                  <div class="row">
+                                  <div class="col-md-3">
+                                     <div class="sidebar content-box-large" style="display: block;">
+                                        <ul class="nav">
+                                            <!-- Main menu -->
+                                            <li><a href="<?= site_url('auth/index') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
+                                           
+                                            <li><a href="<?= site_url('services/list') ?>" <?php if (isset($link_status) && $sub_token=='list'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-check-circle"></i>Patient Waiting list</a></li>
+                                            <li><a href="<?= site_url('services/register') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-check-circle"></i>Start a visit</a></li>
+                                            <li><a href="<?= site_url('auth/index') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-calendar"></i> schedule appointment</a></li>
+                                            <li><a href="<?= site_url('patient/index') ?>" <?php if (isset($link_status) && $sub_token=='patient_search'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-book"></i> Patient notes</a></li>
+                                            <li class="current"><a href="<?= site_url('payment/index') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-money"></i> Payments</a></li>
+                                        </ul>
+                                     </div>
+                                  </div>
+                   <div class="content">
+              <div class="container-fluid">
+                  <div class="row">
                       <div class="col-md-8">
-                      <div class="card">
+                          <div class="card">
                               <div class="card-header" data-background-color="blue">
                                   <h4 class="title">Cash Payment</h4>
-                                    <p class="category">New Payment <i class="fa fa-money" aria-hidden="true"></i>
- </p>
+                                    <p class="category">New Payment <i class="fa fa-money" aria-hidden="true"></i></p>
                               </div>
                               <div class="card-content">
                         
@@ -41,7 +55,7 @@
                               <div class="form-group label-floating">
                                   <label class="control-label">Total Bill</label>
                                   <input type="text" name="total_bill" class="form-control" value="<?php foreach ($single_bill as $bill) {
-                                    echo $bill->service_cost;
+                                    echo $bill->total_amount;
                                   }?>" >
                               </div>
                               </div>
@@ -51,7 +65,7 @@
 
                               <div class="form-group label-floating">
                                   <label class="control-label">Amount paid</label>
-                                  <input type="text" name="service_cost" class="form-control" >
+                                  <input type="text" name="amount_paid" class="form-control" >
                               </div>
                               </div>
                             </div>
@@ -70,3 +84,7 @@
      </div>
 
 </div>
+                         
+                   
+</section>
+  
