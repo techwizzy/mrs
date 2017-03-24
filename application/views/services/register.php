@@ -13,7 +13,7 @@
                                             <li class="current"><a href="<?= site_url('services/register') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-check-circle"></i>Start a visit</a></li>
                                             <li><a href="<?= site_url('auth/index') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-calendar"></i> schedule appointment</a></li>
                                             <li><a href="<?= site_url('patient/index') ?>" <?php if (isset($link_status) && $sub_token=='patient_search'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-book"></i> Patient notes</a></li>
-                                            <li><a href="<?= site_url('patient/create_patient') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-money"></i> Payments</a></li>
+                                            <li><a href="<?= site_url('payment/index') ?>" <?php if (isset($link_status) && $sub_token=='Payments'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-money"></i> Payments</a></li>
                                         </ul>
                                      </div>
                                   </div>
@@ -36,12 +36,11 @@
                                                           ?>
 
                                                             <tr>
-                                                              <td>
+                                                              <td id="check">
                                                                 <div class="checkbox">
                                                                   <label>
-                                                    
-                                                                  <input type="checkbox" id="<?= "chbx[".$i."]";?>" name="service_name[]" value="<?php echo $service->service_name;?>" value2 = "<?php echo $service->service_cost;?>" />
-                                                                    <input type="hidden" class="cost" name="service_cost[]" value="<?php echo $service->service_cost;?>" /> 
+                                                                  <input class="cost" type="checkbox" id="<?= "chbx[".$i."]";?>" name="service_name[]" value="<?php echo $service->service_name;?>" data-price= "<?php echo $service->service_cost;?>"/>
+                                                                    <input type="hidden" class="hidden" name="service_cost[]" value="<?php echo $service->service_cost;?>" /> 
                                                                   </label>
                                                                 </div>
                                                               </td>

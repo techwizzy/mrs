@@ -126,26 +126,27 @@ var navListItems = $('div.setup-panel div a'),
       var favorite = [];
       $.each($("input:checked"), function(){
         favorite.push($(this).val());
-        
       });
       $(".selected").html("<h5><b>"+favorite.join("<br><hr>")+"</b></h5>");
     });
-    $("input[type=checkbox]").on("click", function(){
-      var total = 0;
-      $.each($("input:checked"), function(){
-        for (var i =1 ; i >= 0; i++) {
-          x = document.getElementById("chbx["+i+"]").getAttribute("value2");
-          total += parseFloat(x);
-           }
+    $('.cost, .hidden').change(function(){
+      var $form = $(this).closest('form'),total = 0;
+      $form.find('.cost:checked').each(function() {
+        total += 
+        parseInt($(this).next('.hidden').val())
       });
-      $(".total").html("<h5><b>"+total+"</b></h5>");
-      document.getElementById("total").innerHTML = total;
+      $('.total').text(total);
     });
-    // $(".total").hide();
-    // $("#show").click(function(){
-    //   $(".total").show();
-    // })
-});
+
+
+    // $("input[type=checkbox]").change("click", function(){
+    //   var $input = $(this);
+    //   $.each($("input:checked"), function(){
+    //       x = $input.attr(value2);
+    //   });
+    //    $(".total").text( x );
+      //document.getElementById("total").innerHTML = total;
+    });
 
  
 

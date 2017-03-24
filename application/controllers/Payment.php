@@ -87,8 +87,8 @@ class Payment extends MY_Controller {
 	else
 	{
 		$id = $this->session->userdata('id');
-		$this->service_model->insertcash($id);
-		$this->index();
+		$this->payment_model->insertcash($id);
+		$this->transaction();
 	}
 	}
 	public function checkinsert()
@@ -108,7 +108,7 @@ class Payment extends MY_Controller {
 	else
 	{
 		$id = $this->session->userdata('id');
-		$this->service_model->insertcheck($id);
+		$this->payment_model->insertcheck($id);
 		$this->_render_page('services/index', $this->data);
 	}
 	}
@@ -129,7 +129,7 @@ class Payment extends MY_Controller {
 	else
 	{
 		$id = $this->session->userdata('id');
-		$this->service_model->insertcorporate($id);
+		$this->payment_model->insertcorporate($id);
 		$this->_render_page('services/index', $this->data);
 	}
 	}
@@ -150,7 +150,7 @@ class Payment extends MY_Controller {
 	else
 	{
 		$id = $this->session->userdata('id');
-		$this->service_model->insertcredit($id);
+		$this->payment_model->insertcredit($id);
 		$this->_render_page('services/index', $this->data);
 	}
 	}
@@ -171,8 +171,16 @@ class Payment extends MY_Controller {
 	else
 	{
 		$id = $this->session->userdata('id');
-		$this->service_model->insertcredit($id);
+		$this->payment_model->insertcredit($id);
 		$this->_render_page('services/index', $this->data);
 	}
+	}
+	public function transaction()
+	{
+		$this->data['token']='home';
+    	$this->data['sub_token']='payment';
+		$id = $this->session->userdata('id');
+		$data['transaction'] = $this->payment_model->show_id($id);
+		$this->_render_page('payments/transaction', $data);
 	}
 }
