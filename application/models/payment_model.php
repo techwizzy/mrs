@@ -94,7 +94,7 @@ class Payment_model extends CI_Model {
             $this->db->where('pid', $id);
             $query2 = $this->db->get('transaction')->result();
             foreach ($query2 as $query2) {
-                if ($query2->total_amount >= $query2->total_paid) {
+                if ($query2->total_paid >= $query2->total_amount) {
                    $update = array(
                         'payment_status' => "paid",
                         );
@@ -154,7 +154,7 @@ class Payment_model extends CI_Model {
             $this->db->where('pid', $id);
             $query2 = $this->db->get('transaction')->result();
             foreach ($query2 as $query2) {
-                if ($query2->total_amount >= $query2->total_paid) {
+                if ($query2->total_paid >= $query2->total_amount) {
                    $update = array(
                         'payment_status' => "paid",
                         );
@@ -214,7 +214,7 @@ class Payment_model extends CI_Model {
             $this->db->where('pid', $id);
             $query2 = $this->db->get('transaction')->result();
             foreach ($query2 as $query2) {
-                if ($query2->total_amount >= $query2->total_paid) {
+                if ($query2->total_paid >= $query2->total_amount) {
                    $update = array(
                         'payment_status' => "paid",
                         );
