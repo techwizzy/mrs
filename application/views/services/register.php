@@ -1,9 +1,4 @@
- <script type="text/javascript">
-    $(document).ready(function() {
-        
-    });
-</script>
- <section style="margin-top:30px">
+<section style="margin-top:30px">
                   <div class="row">
                                   <div class="col-md-3">
                                      <div class="sidebar content-box-large" style="display: block;">
@@ -50,7 +45,7 @@
                                                           <?php } ?>
                                                           </tbody>
                                                         </table>
-                                                          <p><button name="select" type="submit" id="show" class="btn btn-info pull-right">Register Service</button></p>
+                                                          <p><button name="select" type="submit" id="show" class="btn btn-info pull-right" onclick="enableButton2()" >Register Service</button></p>
                                                            </div>
                                                           <?php echo form_close();?>
                                                           <br>
@@ -74,7 +69,7 @@
                                                             </tr>
                                                           </tbody>
                                                         </table>
-                                                          <p><button type="submit" class="btn btn-info pull-right">Add to waiting list</button></p>
+                                                          <p><button type="submit" id="button2" class="btn btn-info pull-right">Add to waiting list</button></p>
                                                           <?php echo form_close();?>
                                                           </div>
                                                           <br>

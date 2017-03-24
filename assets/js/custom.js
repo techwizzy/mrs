@@ -137,16 +137,11 @@ var navListItems = $('div.setup-panel div a'),
       });
       $('.total').text(total);
     });
-
-
-    // $("input[type=checkbox]").change("click", function(){
-    //   var $input = $(this);
-    //   $.each($("input:checked"), function(){
-    //       x = $input.attr(value2);
-    //   });
-    //    $(".total").text( x );
-      //document.getElementById("total").innerHTML = total;
-    });
+//     $("#show").on("click", function (e) {
+//     $("#button2").attr("disabled", false);
+//     $(this).closest("form").submit()
+// });
+});
 
  
 
