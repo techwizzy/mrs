@@ -12,22 +12,15 @@
     <meta name="viewport" content="width=device-width" />
 
   
-
-    <link href="<?= base_url() ?>assets/css/jquery-ui.css" rel="stylesheet" media="screen">
-     <link href="<?= base_url() ?>assets/vendors/form-helpers/css/bootstrap-formhelpers.min.css" rel="stylesheet">
-    <!-- Bootstrap -->
-    <link href="<?= base_url() ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="<?= base_url() ?>assets/vendors/fullcalendar/fullcalendar.min.css" rel="stylesheet" media="screen">
-    <!-- styles -->
-    <link href="<?= base_url() ?>assets/css/styles.css" rel="stylesheet">
- <link href="<?= base_url() ?>assets/vendors/bootstrap-datetimepicker/datetimepicker.css" rel="stylesheet">
- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/jq-2.2.4/jszip-2.5.0/pdfmake-0.1.18/dt-1.10.13/af-2.1.3/b-1.2.4/b-colvis-1.2.4/b-flash-1.2.4/b-html5-1.2.4/b-print-1.2.4/cr-1.3.2/fc-3.2.2/fh-3.1.2/kt-2.2.0/r-2.1.1/rr-1.2.0/sc-1.4.2/se-1.2.0/datatables.min.css"/>
+ <link href="<?= base_url() ?>assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link href='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.min.css' rel='stylesheet' />
+ <link href='//cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.1.1/fullcalendar.print.css' rel='stylesheet' media='print' />
  <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
  <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css">
-
+ <link href="<?= base_url() ?>assets/css/styles.css" rel="stylesheet">
  <link href="<?= base_url() ?>assets/css/tabs.css" rel="stylesheet">
-  
- <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+ <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -89,7 +82,7 @@
                         <?php endif ?> ><a href="<?=site_url('appointment/events')?>" <?php if (isset($link_status) && $token=='appointment'): ?> <?= $active_style ?><?php endif ?>><span><i  class="glyphicon glyphicon-calendar"></i> Appointment scheduling</span></a></li>
                         <li <?php if (isset($link_status) && $token=='visits'): ?>
                             class="<?= $link_status ?>"
-                        <?php endif ?> ><a href="#section-3" <?php if (isset($link_status) && $token=='visits'): ?> <?= $active_style ?><?php endif ?>><span><i  class="glyphicon glyphicon-folder-open"></i> Visits</span></a></li>
+                        <?php endif ?> ><a href="<?=site_url('appointment/waitingList')?>" <?php if (isset($link_status) && $token=='visits'): ?> <?= $active_style ?><?php endif ?>><span><i  class="glyphicon glyphicon-folder-open"></i> Visits</span></a></li>
                        <li <?php if (isset($link_status) && $token=='expenses'): ?>
                             class="<?= $link_status ?>"
                         <?php endif ?> ><a href="#section-4" <?php if (isset($link_status) && $token=='expenses'): ?> <?= $active_style ?><?php endif ?>><span><i  class="glyphicon glyphicon-folder-usd"></i> Expenses</span></a></li>

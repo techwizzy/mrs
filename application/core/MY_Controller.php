@@ -33,6 +33,18 @@ class MY_Controller extends CI_Controller {
 
         $this->load->view('footer');
     }
+    public function calendar_page($view, $data=null, $returnhtml=false)//I think this makes more sense
+    {
+
+        $this->load->view('appointment_header',$this->data);
+       // $this->load->view('sidebar');
+       // $this->load->view('topbar');
+        $this->viewdata = (empty($data)) ? $this->data: $data;
+
+         $this->load->view($view, $this->viewdata, $returnhtml);
+
+        $this->load->view('appointment_footer');
+    }
 
     
     public function _get_csrf_nonce()

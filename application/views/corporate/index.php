@@ -31,34 +31,34 @@
                                         </div>
                                         <div class="panel-body">
                                            <table  class="table table-bordered " id="example">
-									   <thead>
-										<tr>
-											<th></th>
-	                                    	<th>Corporate Name</th>
-	                                    	<th>Description</th>
-											<th>Action</th>
-											
-										</tr>
-										</thead>
-										<tbody>
-										 <?php foreach ($corporates as $corporate): ?>
-											<tr>
-									            <td><?= $corporate->id; ?></td>
-	                                        	<td><?= $corporate->name; ?></td>
-	                                        	<td><?= $corporate->desc; ?></td>
-											   <td>
-												<a href="<?= site_url("corporate/show_corporate_id/".$corporate->id); ?>" data-toggle="tooltip"  title="edit" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
-			                                    
-												</td>
-											</tr>
-										<?php endforeach;?>
-										</tbody>
-			                      </table>
-                                        </div>
-                                    </div>
-                                </div>
+                        									   <thead>
+                        										<tr>
+                        											<th></th>
+                        	                                    	<th>Corporate Name</th>
+                        	                                    	<th>Description</th>
+                        											<th>Action</th>
+                        											
+                        										</tr>
+                        										</thead>
+                        										<tbody>
+                        										 <?php foreach ($corporates as $corporate): ?>
+                        											<tr>
+                        									            <td><?= $corporate->id; ?></td>
+                        	                                        	<td><?= $corporate->name; ?></td>
+                        	                                        	<td><?= $corporate->desc; ?></td>
+                        											   <td>
+                        												<a href="<?= site_url("corporate/show_corporate_id/".$corporate->id); ?>" data-toggle="tooltip"  title="edit" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i></a>
+                        			                                    
+                        												</td>
+                        											</tr>
+                        										<?php endforeach;?>
+                        										</tbody>
+                        			                      </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-                    </section>
-	        
+                                            </section>
+                        	        
 
 

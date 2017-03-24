@@ -55,32 +55,7 @@ $('#term').bind('input', function(){
    });
   }
   });
- var file_no=$('#file_no').val();
 
-var zone = "03:00";
-$('#visits').fullCalendar({
-  header: {
-   left: 'prev,next today',
-   center: 'title',
-   right: 'month,agendaWeek,agendaDay'
-  },
-  editable: true,
-  droppable: true
-});
-$.ajax({
-    url: 'http://localhost/mrs/patient/get_visit_events/'+file_no,
-   type: 'POST',
-   data: 'type=fetch',
-   async: false,
-   success: function(response){
-     json_events = response;
-     $('#visits').fullCalendar({
-    events: JSON.parse(json_events)
-    });
-   }
-
-});
- 
 var navListItems = $('div.setup-panel div a'),
           allWells = $('.setup-content'),
           allNextBtn = $('.nextBtn');
@@ -125,5 +100,50 @@ var navListItems = $('div.setup-panel div a'),
 });
 
  
-
+$(function() {
+      Highcharts.chart('container', {
+    chart: {
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+        }
+    },
+    title: {
+        text: 'Browser market shares at a specific website, 2014'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            depth: 35,
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+            }
+        }
+    },
+    series: [{
+        type: 'pie',
+        name: 'Browser share',
+        data: [
+            ['Firefox', 45.0],
+            ['IE', 26.8],
+            {
+                name: 'Chrome',
+                y: 12.8,
+                sliced: true,
+                selected: true
+            },
+            ['Safari', 8.5],
+            ['Opera', 6.2],
+            ['Others', 0.7]
+        ]
+    }]
+});
+ });
 

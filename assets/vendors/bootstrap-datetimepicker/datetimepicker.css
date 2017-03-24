@@ -98,22 +98,22 @@
   bottom: -6px;
   left: 7px;
 }
-.datetimepicker > div {
+.datetimepicker > input {
   display: none;
 }
-.datetimepicker.minutes div.datetimepicker-minutes {
+.datetimepicker.minutes input.datetimepicker-minutes {
     display: block;
 }
-.datetimepicker.hours div.datetimepicker-hours {
+.datetimepicker.hours input.datetimepicker-hours {
     display: block;
 }
-.datetimepicker.days div.datetimepicker-days {
+.datetimepicker.days input.datetimepicker-days {
     display: block;
 }
-.datetimepicker.months div.datetimepicker-months {
+.datetimepicker.months input.datetimepicker-months {
   display: block;
 }
-.datetimepicker.years div.datetimepicker-years {
+.datetimepicker.years input.datetimepicker-years {
   display: block;
 }
 .datetimepicker table {

@@ -105,7 +105,7 @@ class Patient extends MY_Controller {
            $this->data['visits']=$this->patient_model->get_patient_visits($file_no);
            $this->data['file_no']=$file_no;
            // var_dump($this->data);
-           $this->_render_page('patient/view',$this->data);
+           $this->calendar_page('patient/view',$this->data);
  	  }
  }
 
@@ -126,5 +126,28 @@ public function edit_patient($id)
       $this->data['patient']=$this->patient_model->get_patient($id);    
       $this->_render_page('patient/edit',$this->data);    
  }
+public function note($file_no)
+	{
+		$this->data['token'] = 'home';
+        $this->data['sub_token'] = 'notes';
+        $this->data['file_no']=$file_no;
+		
+		$this->data['notes'] = $this->patient_model->get_notes($file_no);
+			//var_dump($this->data);
+		$this->_render_page('patient/note', $this->data);
+		
+  }
+public function create_note()
+	{
+		$this->data['token'] = 'home';
+        $this->data['sub_token'] = 'notes';
+        $this->data['file_no']=$this->input->post('file_no');
+		$file=$this->input->post('file_no');
+		$note=array('p_id'=>$file, 'notes'=>$this->input->post('notes'),'date_of_note'=>date('Y-m-d'));
+	    $this->patient_model->add_notes($note);
+			//var_dump($this->data);
+		redirect('patient/note/'.$file, $this->data);
+		
+  }
 
 }

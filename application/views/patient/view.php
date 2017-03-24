@@ -8,9 +8,20 @@
                                             <li class="current"><a href="<?= site_url('auth/index') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
                                             <li><a href="<?= site_url('patient/edit_patient/'.$file_no) ?>" <?php if (isset($link_status) && $sub_token=='patient_search'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-pencil"></i> edit Patient profile</a></li>
                                             <li><a href="<?= site_url('patient/create_patient') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-check-circle"></i>Start a visit</a></li>
-                                            <li class="current"><a href="<?= site_url('auth/index') ?>" <?php if (isset($link_status) && $sub_token=='users'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-calendar"></i> schedule appointment</a></li>
-                                            <li><a href="<?= site_url('patient/index') ?>" <?php if (isset($link_status) && $sub_token=='patient_search'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-book"></i> Patient notes</a></li>
-                                            <li><a href="<?= site_url('patient/create_patient') ?>" <?php if (isset($link_status) && $sub_token=='backup'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-money"></i> Paymments</a></li>
+                                            <li class="current"><a href="<?= site_url('appointment/view/'.$file_no) ?>" <?php if (isset($link_status) && $sub_token=='appointment'): ?> <?= $active_style ?><?php endif ?>><i class="glyphicon glyphicon-calendar"></i> schedule appointment</a></li>
+                                      
+                                              <li class="submenu">
+                                                    <a href="#">
+                                                    <i class="glyphicon glyphicon-book"></i> Patient notes
+                                                    <span class="caret pull-right"></span>
+                                                     </a>
+                                                     <!-- Sub menu -->
+                                                     <ul>
+                                                        <li><a href="<?= site_url('patient/patient_notes') ?>" <?php if (isset($link_status) && $sub_token=='notes'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-keyboard"></i>Type Notes</a></li>
+                                                        <li><a href="<?= site_url('patient/patient_notes') ?>" <?php if (isset($link_status) && $sub_token=='notes'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-pencil"></i>Handwritten Notes</a></li>
+                                                    </ul>
+                                                </li>
+                                            <li><a href="<?= site_url('patient/patient_payment') ?>" <?php if (isset($link_status) && $sub_token=='payments'): ?> <?= $active_style ?><?php endif ?>><i class="fa fa-money"></i> Payments</a></li>
                                         </ul>
                                      </div>
                                   </div>

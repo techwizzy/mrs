@@ -15107,7 +15107,7 @@ var BFHTimezonesList = {
    * ============== */
 
   $(document).ready( function () {
-    $('div.bfh-datepicker').each(function () {
+    $('input.bfh-datepicker').each(function () {
       var $datepicker;
 
       $datepicker = $(this);
